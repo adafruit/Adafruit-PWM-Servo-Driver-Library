@@ -55,6 +55,16 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 }
 
 void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
+  /*
+  // hmm doesnt work, whyso?
+  Wire.beginTransmission(_i2caddr);
+  Wire.write(LED0_ON_L+4*num);
+  Wire.write(on);
+  Wire.write(on>>8);
+  Wire.write(off);
+  Wire.write(off>>8);
+  Wire.endTransmission();
+  */
   write8(LED0_ON_L+4*num, on);
   write8(LED0_ON_H+4*num, on >> 8);
   write8(LED0_OFF_L+4*num, off);
