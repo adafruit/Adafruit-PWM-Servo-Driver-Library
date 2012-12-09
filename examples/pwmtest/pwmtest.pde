@@ -31,13 +31,15 @@ void setup() {
   // if you want to really speed stuff up, you can go into 'fast 400khz I2C' mode
   // some i2c devices dont like this so much so if you're sharing the bus, watch
   // out for this!
+
+  pwm.begin();
+  pwm.setPWMFreq(1600);  // This is the maximum PWM frequency
     
   // save I2C bitrate
   uint8_t twbrbackup = TWBR;
+  // must be changed after calling Wire.begin() (inside pwm.begin())
   TWBR = 12; // upgrade to 400KHz!
     
-  pwm.begin();
-  pwm.setPWMFreq(1600);  // This is the maximum PWM frequency
 }
 
 void loop() {
