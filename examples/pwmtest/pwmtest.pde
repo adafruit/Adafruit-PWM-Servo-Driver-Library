@@ -50,28 +50,3 @@ void loop() {
     }
   }
 }
-it_PWMServoDriver();
-// you can also call it with a different address you want
-//Adafruit_PWMServoDriver pwm = Adafruit_PWMServoDriver(0x41);
-
-void setup() {
-  Serial.begin(9600);
-  Serial.println("16 channel PWM test!");
-
-  // if you want to really speed stuff up, you can go into 'fast 400khz I2C' mode
-  // some i2c devices dont like this so much so if you're sharing the bus, watch
-  // out for this!
-    
-  // save I2C bitrate
-  uint8_t twbrbackup = TWBR;
-  TWBR = 12; // upgrade to 400KHz!
-    
-  pwm.begin();
-  pwm.setPWMFreq(1600);  // This is the maximum PWM frequency
-}
-
-void loop() {
-  // Drive each PWM in a 'wave'
-  for (uint16_t i=0; i<4096; i += 8) {
-    for (uint8_t pwmnum=0; pwmnum < 16; pwmnum++) {
-      pwm.setPWM(pwmnum, 0, (i + (
