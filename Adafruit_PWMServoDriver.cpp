@@ -22,7 +22,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
 }
 
-boolean Adafruit_PWMServoDriver::begin(void) {
+void Adafruit_PWMServoDriver::begin(void) {
  Wire.begin();
  reset();
 }
