@@ -16,14 +16,19 @@
  ****************************************************/
 
 #include <Adafruit_PWMServoDriver.h>
-#include <Wire.h>
+#include <WIRE.h>
+#ifdef __AVR__
+ #define WIRE Wire
+#else // Arduino Due
+ #define WIRE Wire1
+#endif
 
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
 }
 
 void Adafruit_PWMServoDriver::begin(void) {
- Wire.begin();
+ WIRE.begin();
  reset();
 }
 
@@ -58,27 +63,27 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
   //Serial.print("Setting PWM "); Serial.print(num); Serial.print(": "); Serial.print(on); Serial.print("->"); Serial.println(off);
 
-  Wire.beginTransmission(_i2caddr);
-  Wire.write(LED0_ON_L+4*num);
-  Wire.write(on);
-  Wire.write(on>>8);
-  Wire.write(off);
-  Wire.write(off>>8);
-  Wire.endTransmission();
+  WIRE.beginTransmission(_i2caddr);
+  WIRE.write(LED0_ON_L+4*num);
+  WIRE.write(on);
+  WIRE.write(on>>8);
+  WIRE.write(off);
+  WIRE.write(off>>8);
+  WIRE.endTransmission();
 }
 
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
-  Wire.beginTransmission(_i2caddr);
-  Wire.write(addr);
-  Wire.endTransmission();
+  WIRE.beginTransmission(_i2caddr);
+  WIRE.write(addr);
+  WIRE.endTransmission();
 
-  Wire.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
-  return Wire.read();
+  WIRE.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
+  return WIRE.read();
 }
 
 void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
-  Wire.beginTransmission(_i2caddr);
-  Wire.write(addr);
-  Wire.write(d);
-  Wire.endTransmission();
+  WIRE.beginTransmission(_i2caddr);
+  WIRE.write(addr);
+  WIRE.write(d);
+  WIRE.endTransmission();
 }
