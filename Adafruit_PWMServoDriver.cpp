@@ -16,7 +16,7 @@
  ****************************************************/
 
 #include <Adafruit_PWMServoDriver.h>
-#include <WIRE.h>
+#include <Wire.h>
 #ifdef __AVR__
  #define WIRE Wire
 #else // Arduino Due
