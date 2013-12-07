@@ -2,6 +2,8 @@ Modified for RFDuino compatibility
 
 Added selectable i2c pin configuration
 
+
+
 ----------
 
 This is a library for our Adafruit 16-channel PWM & Servo driver
