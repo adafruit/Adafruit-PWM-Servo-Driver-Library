@@ -72,6 +72,16 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
   WIRE.endTransmission();
 }
 
+//Sets pin without having to deal with on/off tick placement and inverted for sinking current
+//Also automatically handles full off state
+void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val)
+{
+  if(val == 0)
+    setPWM(num, 4096, 0);
+  else 
+    setPWM(num, 0, 4095 - val);
+}
+
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   WIRE.beginTransmission(_i2caddr);
   WIRE.write(addr);
