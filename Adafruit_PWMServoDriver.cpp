@@ -84,6 +84,10 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
       // Special value for signal fully on.
       setPWM(num, 4096, 0);
     }
+    else if (val == 4095) {
+      // Special value for signal fully off.
+      setPWM(num, 0, 4096);
+    }
     else {
       setPWM(num, 0, 4095-val);
     }
@@ -92,6 +96,10 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
     if (val == 4095) {
       // Special value for signal fully on.
       setPWM(num, 4096, 0);
+    }
+    else if (val == 0) {
+      // Special value for signal fully off.
+      setPWM(num, 0, 4096);
     }
     else {
       setPWM(num, 0, val);
