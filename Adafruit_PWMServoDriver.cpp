@@ -23,6 +23,9 @@
  #define WIRE Wire1
 #endif
 
+// Set to true to print some debug messages, or false to disable them.
+#define ENABLE_DEBUG_OUTPUT true
+
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
 }
@@ -45,9 +48,13 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   prescaleval /= 4096;
   prescaleval /= freq;
   prescaleval -= 1;
-  Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
+  if (ENABLE_DEBUG_OUTPUT) {
+    Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
+  }
   uint8_t prescale = floor(prescaleval + 0.5);
-  Serial.print("Final pre-scale: "); Serial.println(prescale);  
+  if (ENABLE_DEBUG_OUTPUT) {
+    Serial.print("Final pre-scale: "); Serial.println(prescale);
+  }
   
   uint8_t oldmode = read8(PCA9685_MODE1);
   uint8_t newmode = (oldmode&0x7F) | 0x10; // sleep
