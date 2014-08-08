@@ -1,3 +1,6 @@
+/*** 2013/12/07
+choconeko:RFDuino compatible version
+***/
 /*************************************************** 
   This is a library for our Adafruit 16-channel PWM & Servo driver
 
@@ -23,12 +26,27 @@
  #define WIRE Wire1
 #endif
 
+#ifdef RFDUINO
+#define WIRE Wire
+#endif
+
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
 }
 
+#ifdef RFDUINO
+void Adafruit_PWMServoDriver::begin(uint8_t clock_pin, uint8_t data_pin) {
+ WIRE.beginOnPins(clock_pin,data_pin);
+ reset();
+}
+#endif
+
 void Adafruit_PWMServoDriver::begin(void) {
+#ifdef RFDUINO
+ WIRE.beginOnPins(5,6); // default pins set to 5 and 6
+#else
  WIRE.begin();
+#endif
  reset();
 }
 
