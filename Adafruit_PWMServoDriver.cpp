@@ -17,7 +17,9 @@
 
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
-#ifdef __AVR__
+#if defined(__AVR__)
+ #define WIRE Wire
+#elif defined(CORE_TEENSY) // Teensy boards
  #define WIRE Wire
 #else // Arduino Due
  #define WIRE Wire1
