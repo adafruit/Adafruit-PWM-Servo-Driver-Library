@@ -26,7 +26,7 @@
 #endif
 
 // Set to true to print some debug messages, or false to disable them.
-#define ENABLE_DEBUG_OUTPUT true
+#define ENABLE_DEBUG_OUTPUT false
 
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
