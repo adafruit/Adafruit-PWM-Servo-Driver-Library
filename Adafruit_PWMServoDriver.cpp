@@ -21,6 +21,8 @@
  #define WIRE Wire
 #elif defined(CORE_TEENSY) // Teensy boards
  #define WIRE Wire
+#elif defined(ESP8266)
+ #define WIRE Wire
 #else // Arduino Due
  #define WIRE Wire1
 #endif
