@@ -38,9 +38,15 @@ void setup() {
   Serial.begin(9600);
   Serial.println("16 channel Servo test!");
 
+#ifdef ESP8266
+  Wire.pins(2, 14);   // ESP8266 can use any two pins, such as SDA to #2 and SCL to #14
+#endif
+
   pwm.begin();
   
   pwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
+
+  yield();
 }
 
 // you can use this function if you'd like to set the pulse length in seconds
@@ -65,12 +71,14 @@ void loop() {
   for (uint16_t pulselen = SERVOMIN; pulselen < SERVOMAX; pulselen++) {
     pwm.setPWM(servonum, 0, pulselen);
   }
+
   delay(500);
   for (uint16_t pulselen = SERVOMAX; pulselen > SERVOMIN; pulselen--) {
     pwm.setPWM(servonum, 0, pulselen);
   }
+
   delay(500);
 
   servonum ++;
-  if (servonum > 15) servonum = 0;
+  if (servonum > 7) servonum = 0;
 }

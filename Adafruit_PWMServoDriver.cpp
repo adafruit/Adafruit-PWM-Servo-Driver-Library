@@ -17,13 +17,12 @@
 
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
-#if defined(__AVR__)
- #define WIRE Wire
-#elif defined(CORE_TEENSY) // Teensy boards
- #define WIRE Wire
-#else // Arduino Due
+#if defined(ARDUINO_SAM_DUE)
  #define WIRE Wire1
+#else
+ #define WIRE Wire
 #endif
+
 
 // Set to true to print some debug messages, or false to disable them.
 #define ENABLE_DEBUG_OUTPUT false
