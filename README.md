@@ -31,7 +31,7 @@ Atmega32u4 @ 8MHz |      X       |             |            |
 ESP8266           |      X       |             |            |  In function &#39;void setup()&#39;:
 servo.pde:42:18: warning: &#39;void TwoWire::pins(int, int)&#39; is deprecated (declared at /Users/james/Library/Arduino15/packages/esp8266/hardware/esp8266/2.0.0/libraries/Wire/Wire.h:54) [-Wdeprecated-declarations]
 Atmega2560 @ 16MHz |      X       |             |            | 
-ATSAM3X8E         |             |             |     X       | 
+ATSAM3X8E         |      X       |             |            | Use SDA1/SCL1
 ATSAM21D          |             |             |     X       | 
 ATtiny85 @ 16MHz  |             |             |     X       | 
 ATtiny85 @ 8MHz   |             |             |     X       | 
