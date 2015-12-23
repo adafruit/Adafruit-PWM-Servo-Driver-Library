@@ -25,7 +25,7 @@ Place the Adafruit_PWMServoDriver library folder your <arduinosketchfolder>/libr
 MCU               | Tested Works | Doesn't Work | Not Tested  | Notes
 ----------------- | :----------: | :----------: | :---------: | -----
 Atmega328 @ 16MHz |      X       |             |            | 
-Atmega328 @ 12MHz |             |             |     X       | 
+Atmega328 @ 12MHz |             |      X       |            | 
 Atmega32u4 @ 16MHz |             |             |     X       | 
 Atmega32u4 @ 8MHz |             |             |     X       | 
 ESP8266           |             |             |     X       | 
