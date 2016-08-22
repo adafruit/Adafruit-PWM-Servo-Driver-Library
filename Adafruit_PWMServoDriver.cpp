@@ -118,7 +118,7 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   WIRE.beginTransmission(_i2caddr);
   WIRE.write(addr);
-  WIRE.endTransmission();
+  WIRE.endTransmission(false);
 
   WIRE.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
   return WIRE.read();
