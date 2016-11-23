@@ -36,6 +36,10 @@ void Adafruit_PWMServoDriver::begin(void) {
  reset();
 }
 
+void Adafruit_PWMServoDriver::begin(int sda, int scl) {
+ WIRE.begin(sda, scl);
+ reset();
+}
 
 void Adafruit_PWMServoDriver::reset(void) {
  write8(PCA9685_MODE1, 0x0);
