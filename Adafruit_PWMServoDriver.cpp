@@ -42,21 +42,25 @@ void Adafruit_PWMServoDriver::reset(void) {
 }
 
 void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
-  //Serial.print("Attempting to set freq ");
-  //Serial.println(freq);
+  #if (ENABLE_DEBUG_OUTPUT)
+    Serial.print("Attempting to set freq ");
+    Serial.println(freq);
+  #endif
   freq *= 0.9;  // Correct for overshoot in the frequency setting (see issue #11).
   float prescaleval = 25000000;
   prescaleval /= 4096;
   prescaleval /= freq;
   prescaleval -= 1;
-  if (ENABLE_DEBUG_OUTPUT) {
-    //Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
-  }
+  #if (ENABLE_DEBUG_OUTPUT)
+    Serial.print("Estimated pre-scale: ");
+    Serial.println(prescaleval);
+  #endif
   uint8_t prescale = floor(prescaleval + 0.5);
-  if (ENABLE_DEBUG_OUTPUT) {
-    //Serial.print("Final pre-scale: "); Serial.println(prescale);
-  }
-  
+  #if (ENABLE_DEBUG_OUTPUT)
+    Serial.print("Final pre-scale: ");
+    Serial.println(prescale);
+  #endif
+
   uint8_t oldmode = read8(PCA9685_MODE1);
   uint8_t newmode = (oldmode&0x7F) | 0x10; // sleep
   write8(PCA9685_MODE1, newmode); // go to sleep
@@ -65,11 +69,21 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   delay(5);
   write8(PCA9685_MODE1, oldmode | 0xa1);  //  This sets the MODE1 register to turn on auto increment.
                                           // This is why the beginTransmission below was not working.
-  //  Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
+  #if (ENABLE_DEBUG_OUTPUT)
+   Serial.print("Mode now 0x");
+   Serial.println(read8(PCA9685_MODE1), HEX);
+  #endif
 }
 
 void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
-  //Serial.print("Setting PWM "); Serial.print(num); Serial.print(": "); Serial.print(on); Serial.print("->"); Serial.println(off);
+  #if (ENABLE_DEBUG_OUTPUT)
+    Serial.print("Setting PWM ");
+    Serial.print(num);
+    Serial.print(": ");
+    Serial.print(on);
+    Serial.print("->");
+    Serial.println(off);
+  #endif
 
   WIRE.beginTransmission(_i2caddr);
   WIRE.write(LED0_ON_L+4*num);
