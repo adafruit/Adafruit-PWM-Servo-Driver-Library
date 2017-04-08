@@ -1,0 +1,7 @@
+Date of pull : April 8 2017 OZ2CPU-thomas from denmark
+issue : 
+pwm go from 0 to 99.99% with values from 0-4095
+not 100% as expected.
+pwm.setPWM(0, 0, 0); // channel0, start, stop timer 0% pwm
+pwm.setPWM(1, 0, 1); // channel1, start, stop timer 150nS short high pulse as expected
+pwm.setPWM(2, 0, 4095); // channel2, start, stop timer, high with a 150nS short low pulse, ERROR NOT as expected
