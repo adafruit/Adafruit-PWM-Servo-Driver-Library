@@ -86,7 +86,7 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
 void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
 {
   // Clamp value between 0 and 4095 inclusive.
-  val = min(val, 4095);
+  if (val > 4095) val = 4095;
   if (invert) {
     if (val == 0) {
       // Special value for signal fully on.
