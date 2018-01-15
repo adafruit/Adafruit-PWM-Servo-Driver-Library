@@ -58,6 +58,8 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
 void Adafruit_PWMServoDriver::begin(void) {
   _i2c->begin();
   reset();
+  // set a default frequency
+  setPWMFreq(1000);
 }
 
 
@@ -67,7 +69,8 @@ void Adafruit_PWMServoDriver::begin(void) {
 */
 /**************************************************************************/
 void Adafruit_PWMServoDriver::reset(void) {
-  write8(PCA9685_MODE1, 0x0);
+  write8(PCA9685_MODE1, 0x80);
+  delay(10);
 }
 
 /**************************************************************************/
@@ -103,8 +106,8 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   write8(PCA9685_PRESCALE, prescale); // set the prescaler
   write8(PCA9685_MODE1, oldmode);
   delay(5);
-  write8(PCA9685_MODE1, oldmode | 0xa1);  //  This sets the MODE1 register to turn on auto increment.
-                                          // This is why the beginTransmission below was not working.
+  write8(PCA9685_MODE1, oldmode | 0xa0);  //  This sets the MODE1 register to turn on auto increment.
+
 #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
 #endif
