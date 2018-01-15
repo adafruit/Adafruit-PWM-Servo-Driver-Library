@@ -46,9 +46,6 @@ void setup() {
   pwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
 
   delay(10);
-  setServoPulse(7, 0.001);
-  while (1) ;
-  
 }
 
 // you can use this function if you'd like to set the pulse length in seconds
