@@ -46,6 +46,9 @@ void setup() {
   pwm.setPWMFreq(60);  // Analog servos run at ~60 Hz updates
 
   delay(10);
+  setServoPulse(7, 0.001);
+  while (1) ;
+  
 }
 
 // you can use this function if you'd like to set the pulse length in seconds
@@ -58,7 +61,7 @@ void setServoPulse(uint8_t n, double pulse) {
   Serial.print(pulselength); Serial.println(" us per period"); 
   pulselength /= 4096;  // 12 bits of resolution
   Serial.print(pulselength); Serial.println(" us per bit"); 
-  pulse *= 1000;
+  pulse *= 1000000;  // convert to us
   pulse /= pulselength;
   Serial.println(pulse);
   pwm.setPWM(n, 0, pulse);
