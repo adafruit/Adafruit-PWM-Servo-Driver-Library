@@ -134,7 +134,7 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
 
 /**************************************************************************/
 /*! 
-    @brief  Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off.  Optional invert parameter supports inverting the pulse for sinking to ground.
+    @brief  Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off and 4095 as completely on.  Optional invert parameter supports inverting the pulse for sinking to ground.
     @param  num One of the PWM output pins, from 0 to 15
     @param  val The number of ticks out of 4096 to be active, should be a value from 0 to 4095 inclusive.
     @param  invert If true, inverts the output, defaults to 'false'

@@ -1,6 +1,7 @@
 /*************************************************** 
   This is an example for our Adafruit 16-channel PWM & Servo driver
-  Servo test - this will drive 16 servos, one after the other
+  Servo test - this will drive 8 servos, one after the other on the
+  first 8 pins of the PCA9685
 
   Pick one up today in the adafruit shop!
   ------> http://www.adafruit.com/products/815
@@ -38,7 +39,7 @@ uint8_t servonum = 0;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("16 channel Servo test!");
+  Serial.println("8 channel Servo test!");
 
   pwm.begin();
   
