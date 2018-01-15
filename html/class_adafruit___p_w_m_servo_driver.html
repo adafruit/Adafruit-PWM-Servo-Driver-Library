@@ -94,7 +94,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:a724a7fc39c6fba34478ecc0eea038bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins.  <a href="#a724a7fc39c6fba34478ecc0eea038bd3">More...</a><br /></td></tr>
 <tr class="separator:a724a7fc39c6fba34478ecc0eea038bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1246cd50849fe0f068cc5d474e06ae96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a1246cd50849fe0f068cc5d474e06ae96">setPin</a> (uint8_t num, uint16_t val, bool invert=false)</td></tr>
-<tr class="memdesc:a1246cd50849fe0f068cc5d474e06ae96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off. Optional invert parameter supports inverting the pulse for sinking to ground.  <a href="#a1246cd50849fe0f068cc5d474e06ae96">More...</a><br /></td></tr>
+<tr class="memdesc:a1246cd50849fe0f068cc5d474e06ae96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off and 4095 as completely on. Optional invert parameter supports inverting the pulse for sinking to ground.  <a href="#a1246cd50849fe0f068cc5d474e06ae96">More...</a><br /></td></tr>
 <tr class="separator:a1246cd50849fe0f068cc5d474e06ae96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -266,7 +266,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
 </div><div class="memdoc">
 
-<p>Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off. Optional invert parameter supports inverting the pulse for sinking to ground. </p>
+<p>Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off and 4095 as completely on. Optional invert parameter supports inverting the pulse for sinking to ground. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num</td><td>One of the PWM output pins, from 0 to 15 </td></tr>
