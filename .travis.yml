@@ -8,7 +8,7 @@ branches:
 
 env:
   global:
-     - PRETTYNAME="Adafruit PCA9685 PWM/Servo Driver Arduino Library"
+     - PRETTYNAME="Adafruit PCA9685 PWM Servo Driver Arduino Library"
 # Optional, will default to "$TRAVIS_BUILD_DIR/Doxyfile"
 #    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
 
