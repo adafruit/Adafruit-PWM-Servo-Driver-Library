@@ -23,7 +23,7 @@
 #else
  #include "WProgram.h"
 #endif
-
+#include "Wire.h"
 
 #define PCA9685_SUBADR1 0x2
 #define PCA9685_SUBADR2 0x3
@@ -50,6 +50,7 @@
 class Adafruit_PWMServoDriver {
  public:
   Adafruit_PWMServoDriver(uint8_t addr = 0x40);
+  Adafruit_PWMServoDriver(TwoWire *I2C, uint8_t addr = 0x40);
   void begin(void);
   void reset(void);
   void setPWMFreq(float freq);
@@ -58,6 +59,8 @@ class Adafruit_PWMServoDriver {
 
  private:
   uint8_t _i2caddr;
+  
+  TwoWire *_i2c;
 
   uint8_t read8(uint8_t addr);
   void write8(uint8_t addr, uint8_t d);
