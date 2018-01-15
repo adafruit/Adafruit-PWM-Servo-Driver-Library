@@ -5,7 +5,7 @@
   ------> http://www.adafruit.com/products/815
 
   These displays use I2C to communicate, 2 pins are required to  
-  interface. For Arduino UNOs, thats SCL -> Analog 5, SDA -> Analog 4
+  interface.
 
   Adafruit invests time and resources providing this open source code, 
   please support Adafruit and open-source hardware by purchasing 
@@ -17,45 +17,72 @@
 
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
+
 #if defined(ARDUINO_SAM_DUE)
- #define WIRE Wire1
-#else
- #define WIRE Wire
+ #define Wire Wire1
 #endif
 
 
 // Set to true to print some debug messages, or false to disable them.
-#define ENABLE_DEBUG_OUTPUT false
+//#define ENABLE_DEBUG_OUTPUT
 
+
+/**************************************************************************/
+/*! 
+    @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address
+    @param  addr The 7-bit I2C address to locate this chip, default is 0x40
+*/
+/**************************************************************************/
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr) {
   _i2caddr = addr;
 }
 
+/**************************************************************************/
+/*! 
+    @brief  Setups the I2C interface and hardware
+*/
+/**************************************************************************/
 void Adafruit_PWMServoDriver::begin(void) {
- WIRE.begin();
- reset();
+  Wire.begin();
+  reset();
 }
 
 
+/**************************************************************************/
+/*! 
+    @brief  Sends a reset command to the PCA9685 chip over I2C
+*/
+/**************************************************************************/
 void Adafruit_PWMServoDriver::reset(void) {
- write8(PCA9685_MODE1, 0x0);
+  write8(PCA9685_MODE1, 0x0);
 }
 
+/**************************************************************************/
+/*! 
+    @brief  Sets the PWM frequency for the entire chip, up to ~1.6 KHz
+    @param  freq Floating point frequency that we will attempt to match
+*/
+/**************************************************************************/
 void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
-  //Serial.print("Attempting to set freq ");
-  //Serial.println(freq);
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Attempting to set freq ");
+  Serial.println(freq);
+#endif
+
   freq *= 0.9;  // Correct for overshoot in the frequency setting (see issue #11).
   float prescaleval = 25000000;
   prescaleval /= 4096;
   prescaleval /= freq;
   prescaleval -= 1;
-  if (ENABLE_DEBUG_OUTPUT) {
-    //Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
-  }
+
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Estimated pre-scale: "); Serial.println(prescaleval);
+#endif
+
   uint8_t prescale = floor(prescaleval + 0.5);
-  if (ENABLE_DEBUG_OUTPUT) {
-    //Serial.print("Final pre-scale: "); Serial.println(prescale);
-  }
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Final pre-scale: "); Serial.println(prescale);
+#endif
   
   uint8_t oldmode = read8(PCA9685_MODE1);
   uint8_t newmode = (oldmode&0x7F) | 0x10; // sleep
@@ -65,24 +92,41 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   delay(5);
   write8(PCA9685_MODE1, oldmode | 0xa1);  //  This sets the MODE1 register to turn on auto increment.
                                           // This is why the beginTransmission below was not working.
-  //  Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Mode now 0x"); Serial.println(read8(PCA9685_MODE1), HEX);
+#endif
 }
 
+/**************************************************************************/
+/*! 
+    @brief  Sets the PWM output of one of the PCA9685 pins
+    @param  num One of the PWM output pins, from 0 to 15
+    @param  on At what point in the 4096-part cycle to turn the PWM output ON
+    @param  off At what point in the 4096-part cycle to turn the PWM output OFF
+*/
+/**************************************************************************/
 void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
-  //Serial.print("Setting PWM "); Serial.print(num); Serial.print(": "); Serial.print(on); Serial.print("->"); Serial.println(off);
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Setting PWM "); Serial.print(num); Serial.print(": "); Serial.print(on); Serial.print("->"); Serial.println(off);
+#endif
 
-  WIRE.beginTransmission(_i2caddr);
-  WIRE.write(LED0_ON_L+4*num);
-  WIRE.write(on);
-  WIRE.write(on>>8);
-  WIRE.write(off);
-  WIRE.write(off>>8);
-  WIRE.endTransmission();
+  Wire.beginTransmission(_i2caddr);
+  Wire.write(LED0_ON_L+4*num);
+  Wire.write(on);
+  Wire.write(on>>8);
+  Wire.write(off);
+  Wire.write(off>>8);
+  Wire.endTransmission();
 }
 
-// Sets pin without having to deal with on/off tick placement and properly handles
-// a zero value as completely off.  Optional invert parameter supports inverting
-// the pulse for sinking to ground.  Val should be a value from 0 to 4095 inclusive.
+/**************************************************************************/
+/*! 
+    @brief  Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off.  Optional invert parameter supports inverting the pulse for sinking to ground.
+    @param  num One of the PWM output pins, from 0 to 15
+    @param  val The number of ticks out of 4096 to be active, should be a value from 0 to 4095 inclusive.
+    @param  invert If true, inverts the output, defaults to 'false'
+*/
+/**************************************************************************/
 void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
 {
   // Clamp value between 0 and 4095 inclusive.
@@ -115,18 +159,20 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert)
   }
 }
 
-uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
-  WIRE.beginTransmission(_i2caddr);
-  WIRE.write(addr);
-  WIRE.endTransmission();
+/*******************************************************************************************/
 
-  WIRE.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
-  return WIRE.read();
+uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
+  Wire.beginTransmission(_i2caddr);
+  Wire.write(addr);
+  Wire.endTransmission();
+
+  Wire.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
+  return Wire.read();
 }
 
 void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
-  WIRE.beginTransmission(_i2caddr);
-  WIRE.write(addr);
-  WIRE.write(d);
-  WIRE.endTransmission();
+  Wire.beginTransmission(_i2caddr);
+  Wire.write(addr);
+  Wire.write(d);
+  Wire.endTransmission();
 }

@@ -42,7 +42,11 @@
 #define ALLLED_OFF_L 0xFC
 #define ALLLED_OFF_H 0xFD
 
-
+/**************************************************************************/
+/*! 
+    @brief  Class that stores state and functions for interacting with PCA9685 PWM chip
+*/
+/**************************************************************************/
 class Adafruit_PWMServoDriver {
  public:
   Adafruit_PWMServoDriver(uint8_t addr = 0x40);
