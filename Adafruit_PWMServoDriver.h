@@ -61,7 +61,7 @@
 #define MODE2_INVRT          0x10
 
 #define OSCILLATOR_CLOCK_FREQUENCY  25000000
-
+#define BETTER_FREQUENCY            26075000 // 4,3% higher
 
 /**************************************************************************/
 /*!

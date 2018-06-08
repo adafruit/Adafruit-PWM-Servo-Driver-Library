@@ -88,8 +88,8 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 #endif
 
   //freq *= 0.9;  // Correct for overshoot in the frequency setting (see issue #11).
-  uint32_t prescaleval = _clock_frequency / freq
-  prescaleval -= 2048 // instead of rounding and -1, -0.5 (2048/4096) and get rid of decimals
+  uint32_t prescaleval = _clock_frequency / freq;
+  prescaleval -= 2048; // instead of rounding and -1, -0.5 (2048/4096) and get rid of decimals
   prescaleval /= 4096; // divide by 4096
 
   uint8_t prescale = prescaleval & 0xFF;
