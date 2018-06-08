@@ -15,7 +15,7 @@
   BSD license, all text above must be included in any redistribution
  ****************************************************/
 
-#include <Adafruit_PWMServoDriver.h>
+#include "Adafruit_PWMServoDriver.h"
 #include <Wire.h>
 
 // Set to true to print some debug messages, or false to disable them.
