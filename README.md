@@ -2,7 +2,7 @@
 
 This is a library for our Adafruit 16-channel PWM & Servo driver, shield or FeatherWing
 
-<img src="https://cdn-shop.adafruit.com/970x728/815-04.jpg" height="300"/>
+<a href="https://www.adafruit.com/products/815"><img src="https://cdn-shop.adafruit.com/970x728/815-04.jpg" height="300"/></a>
 
 Pick one up today in the adafruit shop!
   * https://www.adafruit.com/products/815
