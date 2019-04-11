@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adafruit_20pca9685_20pwm_20servo_20driver_20library_20_5b_21_5bbuild_20status_5d_28https_3a_2f_2ftravis_2dci_2eorg_2fadafruit_2fadafruit_5fpwmservodriver_2esvg_3fbranch_3dmaster_29_5d_28https_3a_2f_2ftravis_2dci_2eorg_2fadafruit_2fadafruit_5fpwmservodriver_29',['Adafruit PCA9685 PWM Servo Driver Library [![Build Status](https://travis-ci.org/adafruit/Adafruit_PWMServoDriver.svg?branch=master)](https://travis-ci.org/adafruit/Adafruit_PWMServoDriver)',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['adafruit_2016_2dchannel_20pwm_20_26_20servo_20driver',['Adafruit 16-channel PWM &amp; Servo driver',['../index.html',1,'']]]
 ];
