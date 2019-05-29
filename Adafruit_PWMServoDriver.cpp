@@ -44,11 +44,13 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
 
 /*!
  *  @brief  Setups the I2C interface and hardware
+ *  @param  prescale
+ *          Sets External Clock (Optional)
+ *          
  */
 void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   _i2c->begin();
   reset();
-  // set a default frequency
   if (prescale) {
     setExtClk(prescale);
   } else {
