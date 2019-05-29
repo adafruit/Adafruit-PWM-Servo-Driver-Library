@@ -161,6 +161,7 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 /*!
  *  @brief  Gets the PWM output of one of the PCA9685 pins
  *  @param  num One of the PWM output pins, from 0 to 15
+ *  @return requested PWM output value
  */
 uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
   _i2c->requestFrom((uint8_t)_i2caddr, LED0_ON_L + 4 * num, (uint8_t)4);
