@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['pca9685_5fmode1',['PCA9685_MODE1',['../_adafruit___p_w_m_servo_driver_8h.html#aec642e3f25e7f83072d68acb14ae4e74',1,'Adafruit_PWMServoDriver.h']]],
-  ['pca9685_5fprescale',['PCA9685_PRESCALE',['../_adafruit___p_w_m_servo_driver_8h.html#a7175106bbec978d9acc85dc7485235a3',1,'Adafruit_PWMServoDriver.h']]],
-  ['pca9685_5fsubadr1',['PCA9685_SUBADR1',['../_adafruit___p_w_m_servo_driver_8h.html#ad58a880e68f5aa69092c658a86641a8e',1,'Adafruit_PWMServoDriver.h']]],
-  ['pca9685_5fsubadr2',['PCA9685_SUBADR2',['../_adafruit___p_w_m_servo_driver_8h.html#a845ec28ef89ed81642ea5f41691d4b51',1,'Adafruit_PWMServoDriver.h']]],
-  ['pca9685_5fsubadr3',['PCA9685_SUBADR3',['../_adafruit___p_w_m_servo_driver_8h.html#a7f60829a2cf850c02403f5c7193b0f00',1,'Adafruit_PWMServoDriver.h']]]
+  ['led0_5foff_5fh',['LED0_OFF_H',['../_adafruit___p_w_m_servo_driver_8h.html#a6d8ff6441f8d2a4fb7b4afd36b8fd329',1,'Adafruit_PWMServoDriver.h']]],
+  ['led0_5foff_5fl',['LED0_OFF_L',['../_adafruit___p_w_m_servo_driver_8h.html#a00e3f4b43121817be365b2f22e8bad84',1,'Adafruit_PWMServoDriver.h']]],
+  ['led0_5fon_5fh',['LED0_ON_H',['../_adafruit___p_w_m_servo_driver_8h.html#a03deab303c78b50c629847b9e0de106b',1,'Adafruit_PWMServoDriver.h']]],
+  ['led0_5fon_5fl',['LED0_ON_L',['../_adafruit___p_w_m_servo_driver_8h.html#a62f7dbcbb1fcf1084804f19a5b42248f',1,'Adafruit_PWMServoDriver.h']]]
 ];

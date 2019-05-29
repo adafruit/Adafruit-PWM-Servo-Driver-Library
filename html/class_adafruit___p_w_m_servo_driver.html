@@ -76,17 +76,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a24157a836ead31f2fbfab00006a634cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a24157a836ead31f2fbfab00006a634cc">Adafruit_PWMServoDriver</a> (TwoWire *I2C=&amp;Wire, uint8_t addr=0x40)</td></tr>
 <tr class="memdesc:a24157a836ead31f2fbfab00006a634cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface.  <a href="#a24157a836ead31f2fbfab00006a634cc">More...</a><br /></td></tr>
 <tr class="separator:a24157a836ead31f2fbfab00006a634cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef401eaad3c34222ac916eb7bd936bc2"><td class="memItemLeft" align="right" valign="top"><a id="aef401eaad3c34222ac916eb7bd936bc2"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aef401eaad3c34222ac916eb7bd936bc2">begin</a> (void)</td></tr>
-<tr class="memdesc:aef401eaad3c34222ac916eb7bd936bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the I2C interface and hardware. <br /></td></tr>
-<tr class="separator:aef401eaad3c34222ac916eb7bd936bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac976f52233a75a4bd0eb6f2ce9b82b7f"><td class="memItemLeft" align="right" valign="top"><a id="ac976f52233a75a4bd0eb6f2ce9b82b7f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#ac976f52233a75a4bd0eb6f2ce9b82b7f">reset</a> (void)</td></tr>
-<tr class="memdesc:ac976f52233a75a4bd0eb6f2ce9b82b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a reset command to the PCA9685 chip over I2C. <br /></td></tr>
-<tr class="separator:ac976f52233a75a4bd0eb6f2ce9b82b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a0cf3b5cabebe8111d5471311e3a63b72">begin</a> (uint8_t prescale=0)</td></tr>
+<tr class="memdesc:a0cf3b5cabebe8111d5471311e3a63b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the I2C interface and hardware.  <a href="#a0cf3b5cabebe8111d5471311e3a63b72">More...</a><br /></td></tr>
+<tr class="separator:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f25f9f07525e08b7622c476b4a1f379"><td class="memItemLeft" align="right" valign="top"><a id="a5f25f9f07525e08b7622c476b4a1f379"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a5f25f9f07525e08b7622c476b4a1f379">reset</a> ()</td></tr>
+<tr class="memdesc:a5f25f9f07525e08b7622c476b4a1f379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a reset command to the PCA9685 chip over I2C. <br /></td></tr>
+<tr class="separator:a5f25f9f07525e08b7622c476b4a1f379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa892432ed08e4b3892c8eb0478168dd8"><td class="memItemLeft" align="right" valign="top"><a id="aa892432ed08e4b3892c8eb0478168dd8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aa892432ed08e4b3892c8eb0478168dd8">sleep</a> ()</td></tr>
+<tr class="memdesc:aa892432ed08e4b3892c8eb0478168dd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts board into sleep mode. <br /></td></tr>
+<tr class="separator:aa892432ed08e4b3892c8eb0478168dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34b9ac672853a4a1b7fc202b4c89d8c4"><td class="memItemLeft" align="right" valign="top"><a id="a34b9ac672853a4a1b7fc202b4c89d8c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a34b9ac672853a4a1b7fc202b4c89d8c4">wakeup</a> ()</td></tr>
+<tr class="memdesc:a34b9ac672853a4a1b7fc202b4c89d8c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wakes board from sleep. <br /></td></tr>
+<tr class="separator:a34b9ac672853a4a1b7fc202b4c89d8c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7967e51188cbacf2c3f269c8aec9d292"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a7967e51188cbacf2c3f269c8aec9d292">setExtClk</a> (uint8_t prescale)</td></tr>
+<tr class="memdesc:a7967e51188cbacf2c3f269c8aec9d292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets EXTCLK pin to use the external clock.  <a href="#a7967e51188cbacf2c3f269c8aec9d292">More...</a><br /></td></tr>
+<tr class="separator:a7967e51188cbacf2c3f269c8aec9d292"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a0ef6f1e3c81aebbd1d1da1bb12f3ed5c">setPWMFreq</a> (float freq)</td></tr>
 <tr class="memdesc:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM frequency for the entire chip, up to ~1.6 KHz.  <a href="#a0ef6f1e3c81aebbd1d1da1bb12f3ed5c">More...</a><br /></td></tr>
 <tr class="separator:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387493a29e513ef700cfb4de30c0acc7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a387493a29e513ef700cfb4de30c0acc7">getPWM</a> (uint8_t num)</td></tr>
+<tr class="memdesc:a387493a29e513ef700cfb4de30c0acc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the PWM output of one of the PCA9685 pins.  <a href="#a387493a29e513ef700cfb4de30c0acc7">More...</a><br /></td></tr>
+<tr class="separator:a387493a29e513ef700cfb4de30c0acc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a724a7fc39c6fba34478ecc0eea038bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a724a7fc39c6fba34478ecc0eea038bd3">setPWM</a> (uint8_t num, uint16_t on, uint16_t off)</td></tr>
 <tr class="memdesc:a724a7fc39c6fba34478ecc0eea038bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins.  <a href="#a724a7fc39c6fba34478ecc0eea038bd3">More...</a><br /></td></tr>
 <tr class="separator:a724a7fc39c6fba34478ecc0eea038bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -135,6 +148,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a0cf3b5cabebe8111d5471311e3a63b72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0cf3b5cabebe8111d5471311e3a63b72">&#9670;&nbsp;</a></span>begin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_PWMServoDriver::begin </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>prescale</em> = <code>0</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Setups the I2C interface and hardware. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prescale</td><td>Sets External Clock (Optional) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a7967e51188cbacf2c3f269c8aec9d292"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7967e51188cbacf2c3f269c8aec9d292">&#9670;&nbsp;</a></span>setExtClk()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_PWMServoDriver::setExtClk </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>prescale</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets EXTCLK pin to use the external clock. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prescale</td><td>Configures the prescale value to be used by the external clock </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ef6f1e3c81aebbd1d1da1bb12f3ed5c">&#9670;&nbsp;</a></span>setPWMFreq()</h2>
 
@@ -158,6 +223,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a387493a29e513ef700cfb4de30c0acc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a387493a29e513ef700cfb4de30c0acc7">&#9670;&nbsp;</a></span>getPWM()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Adafruit_PWMServoDriver::getPWM </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>num</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the PWM output of one of the PCA9685 pins. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>One of the PWM output pins, from 0 to 15 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>requested PWM output value </dd></dl>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reset',['reset',['../class_adafruit___p_w_m_servo_driver.html#ac976f52233a75a4bd0eb6f2ce9b82b7f',1,'Adafruit_PWMServoDriver']]]
+  ['getpwm',['getPWM',['../class_adafruit___p_w_m_servo_driver.html#a387493a29e513ef700cfb4de30c0acc7',1,'Adafruit_PWMServoDriver']]]
 ];
