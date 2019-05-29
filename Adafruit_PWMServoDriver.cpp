@@ -68,7 +68,7 @@ void Adafruit_PWMServoDriver::reset() {
 /*!
  *  @brief  Puts board into sleep mode
  */
-void Adafruit_PWMServoDriver::sleepServo() {
+void Adafruit_PWMServoDriver::sleep() {
   uint8_t awake = read8(PCA9685_MODE1);
   uint8_t sleep = awake | 0x10; // set sleep bit high
   write8(PCA9685_MODE1, sleep);
@@ -78,7 +78,7 @@ void Adafruit_PWMServoDriver::sleepServo() {
 /*!
  *  @brief  Wakes board from sleep
  */
-void Adafruit_PWMServoDriver::wakeupServo() {
+void Adafruit_PWMServoDriver::wakeup() {
   uint8_t sleep = read8(PCA9685_MODE1);
   uint8_t wakeup = sleep & ~0x10; // set sleep bit low
   write8(PCA9685_MODE1, wakeup);

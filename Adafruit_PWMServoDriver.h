@@ -51,8 +51,8 @@ class Adafruit_PWMServoDriver {
   Adafruit_PWMServoDriver(TwoWire *I2C = &Wire, uint8_t addr = 0x40);
   void begin(uint8_t prescale = 0);
   void reset();
-  void sleepServo();
-  void wakeupServo();
+  void sleep();
+  void wakeup();
   void setExtClk(uint8_t prescale);
   void setPWMFreq(float freq);
   void setPWM(uint8_t num, uint16_t on, uint16_t off);
