@@ -65,6 +65,25 @@ void Adafruit_PWMServoDriver::reset() {
   delay(10);
 }
 
+/*!
+ *  @brief  Puts board into sleep mode
+ */
+void Adafruit_PWMServoDriver::sleepServo() {
+  uint8_t awake = read8(PCA9685_MODE1);
+  uint8_t sleep = awake | 0x10; // set sleep bit high
+  write8(PCA9685_MODE1, sleep);
+  delay(5); // wait until cycle ends for sleep to be active
+}
+
+/*!
+ *  @brief  Wakes board from sleep
+ */
+void Adafruit_PWMServoDriver::wakeupServo() {
+  uint8_t sleep = read8(PCA9685_MODE1);
+  uint8_t wakeup = sleep & ~0x10; // set sleep bit low
+  write8(PCA9685_MODE1, wakeup);
+}
+
 /**************************************************************************/
 /*!
     @brief  Sets EXTCLK pin to use the external clock
