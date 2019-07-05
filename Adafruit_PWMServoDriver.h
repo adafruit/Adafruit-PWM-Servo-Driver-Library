@@ -48,7 +48,7 @@
  */
 class Adafruit_PWMServoDriver {
  public:
-  Adafruit_PWMServoDriver(TwoWire & I2C = Wire, uint8_t addr = 0x40);
+  Adafruit_PWMServoDriver(uint8_t addr = 0x40, TwoWire & I2C = Wire );
   void begin(uint8_t prescale = 0);
   void reset();
   void sleep();
