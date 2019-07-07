@@ -46,7 +46,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
  *  @brief  Setups the I2C interface and hardware
  *  @param  prescale
  *          Sets External Clock (Optional)
- *          
+ *
  */
 void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   _i2c->begin();
@@ -164,7 +164,7 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
  *  @return requested PWM output value
  */
 uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
-  _i2c->requestFrom((uint8_t)_i2caddr, LED0_ON_L + 4 * num, (uint8_t)4);
+  _i2c->requestFrom((int)_i2caddr, LED0_ON_L + 4 * num, (int)4);
   return _i2c->read();
 }
 
