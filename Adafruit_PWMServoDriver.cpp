@@ -159,6 +159,31 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 }
 
 /*!
+ *  @brief  Sets the output mode of the PCA9685 to either 
+ *  open drain or push pull / totempole. 
+ *  Warning: LEDs with integrated zener diodes should
+ *  only be driven in open drain mode. 
+ *  @param  pushPull totempole if true, open drain if false. 
+ */
+void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {  
+  uint8_t oldmode = read8(PCA9685_MODE2); 
+  uint8_t newmode;
+  if (totempole) {
+    newmode = (oldmode&0x7F) | 0x04;
+  }
+  else {
+    newmode = (oldmode&0x7F) & ~0x04;
+  }
+  write8(PCA9685_MODE2, newmode); 
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Setting output mode: ");
+  Serial.print(totempole ? "totempole" : "open drain");
+  Serial.print(" by setting MODE2 to ");
+  Serial.println(newmode);
+#endif
+}
+
+/*!
  *  @brief  Gets the PWM output of one of the PCA9685 pins
  *  @param  num One of the PWM output pins, from 0 to 15
  *  @return requested PWM output value
