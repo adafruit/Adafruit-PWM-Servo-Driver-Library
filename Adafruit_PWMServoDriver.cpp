@@ -163,7 +163,7 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
  *  open drain or push pull / totempole. 
  *  Warning: LEDs with integrated zener diodes should
  *  only be driven in open drain mode. 
- *  @param  pushPull totempole if true, open drain if false. 
+ *  @param  totempole Totempole if true, open drain if false. 
  */
 void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {  
   uint8_t oldmode = read8(PCA9685_MODE2); 
