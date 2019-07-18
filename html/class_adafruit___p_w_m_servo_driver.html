@@ -97,6 +97,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a0ef6f1e3c81aebbd1d1da1bb12f3ed5c">setPWMFreq</a> (float freq)</td></tr>
 <tr class="memdesc:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM frequency for the entire chip, up to ~1.6 KHz.  <a href="#a0ef6f1e3c81aebbd1d1da1bb12f3ed5c">More...</a><br /></td></tr>
 <tr class="separator:a0ef6f1e3c81aebbd1d1da1bb12f3ed5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d18d478574c8c686e94faefe11094b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a8d18d478574c8c686e94faefe11094b9">setOutputMode</a> (bool totempole)</td></tr>
+<tr class="memdesc:a8d18d478574c8c686e94faefe11094b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output mode of the PCA9685 to either open drain or push pull / totempole. Warning: LEDs with integrated zener diodes should only be driven in open drain mode.  <a href="#a8d18d478574c8c686e94faefe11094b9">More...</a><br /></td></tr>
+<tr class="separator:a8d18d478574c8c686e94faefe11094b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a387493a29e513ef700cfb4de30c0acc7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a387493a29e513ef700cfb4de30c0acc7">getPWM</a> (uint8_t num)</td></tr>
 <tr class="memdesc:a387493a29e513ef700cfb4de30c0acc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the PWM output of one of the PCA9685 pins.  <a href="#a387493a29e513ef700cfb4de30c0acc7">More...</a><br /></td></tr>
 <tr class="separator:a387493a29e513ef700cfb4de30c0acc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -220,6 +223,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">freq</td><td>Floating point frequency that we will attempt to match </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8d18d478574c8c686e94faefe11094b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d18d478574c8c686e94faefe11094b9">&#9670;&nbsp;</a></span>setOutputMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_PWMServoDriver::setOutputMode </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>totempole</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the output mode of the PCA9685 to either open drain or push pull / totempole. Warning: LEDs with integrated zener diodes should only be driven in open drain mode. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">totempole</td><td>Totempole if true, open drain if false. </td></tr>
   </table>
   </dd>
 </dl>
