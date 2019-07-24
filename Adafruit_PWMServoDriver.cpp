@@ -33,11 +33,11 @@
 /*!
  *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
  * TwoWire interface
+ *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
  *  @param  i2c  A pointer to a 'Wire' compatible object that we'll use to
  * communicate with
- *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
  */
-Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr, TwoWire *i2c) {
   _i2c = i2c;
   _i2caddr = addr;
 }
