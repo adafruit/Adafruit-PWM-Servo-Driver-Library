@@ -19,7 +19,6 @@
  *
  *  BSD license, all text above must be included in any redistribution
  */
-
 #ifndef _ADAFRUIT_PWMServoDriver_H
 #define _ADAFRUIT_PWMServoDriver_H
 
@@ -31,6 +30,7 @@
 #define PCA9685_SUBADR3 0x4 /**< i2c bus address 3 */
 
 #define PCA9685_MODE1 0x0 /**< Mode Register 1 */
+#define PCA9685_MODE2 0x1 /**< Mode Register 2 */
 #define PCA9685_PRESCALE 0xFE /**< Prescaler for PWM output frequency */
 
 #define LED0_ON_L 0x6 /**< LED0 output and brightness control byte 0 */
@@ -48,13 +48,14 @@
  */
 class Adafruit_PWMServoDriver {
  public:
-  Adafruit_PWMServoDriver(TwoWire *I2C = &Wire, uint8_t addr = 0x40);
+  Adafruit_PWMServoDriver(uint8_t addr = 0x40, TwoWire *I2C = &Wire);
   void begin(uint8_t prescale = 0);
   void reset();
   void sleep();
   void wakeup();
   void setExtClk(uint8_t prescale);
   void setPWMFreq(float freq);
+  void setOutputMode(bool totempole);
   uint8_t getPWM(uint8_t num);
   void setPWM(uint8_t num, uint16_t on, uint16_t off);
   void setPin(uint8_t num, uint16_t val, bool invert=false);

@@ -33,11 +33,11 @@
 /*!
  *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
  * TwoWire interface
+ *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
  *  @param  i2c  A pointer to a 'Wire' compatible object that we'll use to
  * communicate with
- *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
  */
-Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr, TwoWire *i2c) {
   _i2c = i2c;
   _i2caddr = addr;
 }
@@ -46,7 +46,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(TwoWire *i2c, uint8_t addr) {
  *  @brief  Setups the I2C interface and hardware
  *  @param  prescale
  *          Sets External Clock (Optional)
- *          
+ *
  */
 void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   _i2c->begin();
@@ -159,12 +159,37 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
 }
 
 /*!
+ *  @brief  Sets the output mode of the PCA9685 to either 
+ *  open drain or push pull / totempole. 
+ *  Warning: LEDs with integrated zener diodes should
+ *  only be driven in open drain mode. 
+ *  @param  totempole Totempole if true, open drain if false. 
+ */
+void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {  
+  uint8_t oldmode = read8(PCA9685_MODE2); 
+  uint8_t newmode;
+  if (totempole) {
+    newmode = (oldmode&0x7F) | 0x04;
+  }
+  else {
+    newmode = (oldmode&0x7F) & ~0x04;
+  }
+  write8(PCA9685_MODE2, newmode); 
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Setting output mode: ");
+  Serial.print(totempole ? "totempole" : "open drain");
+  Serial.print(" by setting MODE2 to ");
+  Serial.println(newmode);
+#endif
+}
+
+/*!
  *  @brief  Gets the PWM output of one of the PCA9685 pins
  *  @param  num One of the PWM output pins, from 0 to 15
  *  @return requested PWM output value
  */
 uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
-  _i2c->requestFrom((uint8_t)_i2caddr, LED0_ON_L + 4 * num, (uint8_t)4);
+  _i2c->requestFrom((int)_i2caddr, LED0_ON_L + 4 * num, (int)4);
   return _i2c->read();
 }
 
