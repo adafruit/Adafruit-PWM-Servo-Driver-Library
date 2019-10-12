@@ -75,7 +75,9 @@
  */
 class Adafruit_PWMServoDriver {
  public:
-  Adafruit_PWMServoDriver(uint8_t addr = PCA9685_I2C_ADDRESS, TwoWire *I2C = &Wire);
+  Adafruit_PWMServoDriver();
+  Adafruit_PWMServoDriver(const uint8_t addr);
+  Adafruit_PWMServoDriver(const uint8_t addr, TwoWire& i2c);
   void begin(uint8_t prescale = 0);
   void reset();
   void sleep();
@@ -90,8 +92,7 @@ class Adafruit_PWMServoDriver {
 
  private:
   uint8_t _i2caddr;
-  
-  TwoWire *_i2c;
+  TwoWire& _i2c;
 
   uint8_t read8(uint8_t addr);
   void write8(uint8_t addr, uint8_t d);

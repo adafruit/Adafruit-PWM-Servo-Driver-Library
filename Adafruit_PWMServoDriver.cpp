@@ -33,13 +33,29 @@
 /*!
  *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
  * TwoWire interface
- *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
- *  @param  i2c  A pointer to a 'Wire' compatible object that we'll use to
- * communicate with
  */
-Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr, TwoWire *i2c) {
-  _i2c = i2c;
-  _i2caddr = addr;
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver():
+  _i2caddr(PCA9685_I2C_ADDRESS), _i2c(Wire) {
+}
+
+/*!
+ *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
+ * TwoWire interface
+ *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
+ */
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr):
+  _i2caddr(addr), _i2c(Wire) {
+}
+
+/*!
+ *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
+ * TwoWire interface
+ *  @param  addr The 7-bit I2C address to locate this chip, default is 0x40
+ *  @param  i2c  A reference to a 'TwoWire' object that we'll use to communicate
+ *  with
+ */
+Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr, TwoWire& i2c) :
+  _i2caddr(addr), _i2c(i2c) {
 }
 
 /*!
@@ -48,7 +64,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(uint8_t addr, TwoWire *i2c) {
  *          Sets External Clock (Optional)
  */
 void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
-  _i2c->begin();
+  _i2c.begin();
   reset();
   if (prescale) {
     setExtClk(prescale);
@@ -197,8 +213,8 @@ uint8_t Adafruit_PWMServoDriver::readPrescale(void)
  *  @return requested PWM output value
  */
 uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
-  _i2c->requestFrom((int)_i2caddr, PCA9685_LED0_ON_L + 4 * num, (int)4);
-  return _i2c->read();
+  _i2c.requestFrom((int)_i2caddr, PCA9685_LED0_ON_L + 4 * num, (int)4);
+  return _i2c.read();
 }
 
 /*!
@@ -217,13 +233,13 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
   Serial.println(off);
 #endif
 
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(PCA9685_LED0_ON_L + 4 * num);
-  _i2c->write(on);
-  _i2c->write(on >> 8);
-  _i2c->write(off);
-  _i2c->write(off >> 8);
-  _i2c->endTransmission();
+  _i2c.beginTransmission(_i2caddr);
+  _i2c.write(PCA9685_LED0_ON_L + 4 * num);
+  _i2c.write(on);
+  _i2c.write(on >> 8);
+  _i2c.write(off);
+  _i2c.write(off >> 8);
+  _i2c.endTransmission();
 }
 
 /*!
@@ -263,17 +279,17 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert) {
 }
 
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(addr);
-  _i2c->endTransmission();
+  _i2c.beginTransmission(_i2caddr);
+  _i2c.write(addr);
+  _i2c.endTransmission();
 
-  _i2c->requestFrom((uint8_t)_i2caddr, (uint8_t)1);
-  return _i2c->read();
+  _i2c.requestFrom((uint8_t)_i2caddr, (uint8_t)1);
+  return _i2c.read();
 }
 
 void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(addr);
-  _i2c->write(d);
-  _i2c->endTransmission();
+  _i2c.beginTransmission(_i2caddr);
+  _i2c.write(addr);
+  _i2c.write(d);
+  _i2c.endTransmission();
 }
