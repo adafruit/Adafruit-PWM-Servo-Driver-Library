@@ -200,7 +200,7 @@ void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {
 
 /*!
  *  @brief  Reads set Prescale from PCA9685
- *  @param  void
+ *  @return prescale value
  */
 uint8_t Adafruit_PWMServoDriver::readPrescale(void)
 {
