@@ -120,19 +120,23 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   Serial.print("Attempting to set freq ");
   Serial.println(freq);
 #endif
-
-  freq *= 0.9; // Correct for overshoot in the frequency setting (see issue #11).
-  float prescaleval = 25000000;
+  // Range output modulation frequency is dependant on oscillator
+  if (freq < 1) freq = 1;
+  if (freq > 3500) freq = 3500; // Datasheet limit is 3052=50MHz/(4*4096)
+  /*
+  freq *= 0.9; // Correct for overshoot in the frequency setting (see issue #11)
+  float prescaleval = FREQUENCY_OSCILLATOR;
+  */
+  uint32_t prescaleval = FREQUENCY_CALIBRATED;
+  prescaleval /= freq; // required output modulation frequency
+  // rounding to nearest number is equal to adding 0,5 and floor to nearest number
+  prescaleval += 2048;
   prescaleval /= 4096;
-  prescaleval /= freq;
   prescaleval -= 1;
+  if (prescaleval < PCA9685_PRESCALE_MIN) prescaleval = PCA9685_PRESCALE_MIN;
+  if (prescaleval > PCA9685_PRESCALE_MAX) prescaleval = PCA9685_PRESCALE_MAX;
+  uint8_t prescale = (uint8_t) prescaleval;
 
-#ifdef ENABLE_DEBUG_OUTPUT
-  Serial.print("Estimated pre-scale: ");
-  Serial.println(prescaleval);
-#endif
-
-  uint8_t prescale = floor(prescaleval + 0.5);
 #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print("Final pre-scale: ");
   Serial.println(prescale);
@@ -176,6 +180,15 @@ void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {
   Serial.print(" by setting MODE2 to ");
   Serial.println(newmode);
 #endif
+}
+
+/*!
+ *  @brief  Reads set Prescale from PCA9685
+ *  @param  void
+ */
+uint8_t Adafruit_PWMServoDriver::readPrescale(void)
+{
+  return read8(PCA9685_PRESCALE);
 }
 
 /*!
