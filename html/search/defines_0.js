@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['allled_5foff_5fh',['ALLLED_OFF_H',['../_adafruit___p_w_m_servo_driver_8h.html#a11632001b28c990e5f6dee015e945b1d',1,'Adafruit_PWMServoDriver.h']]],
-  ['allled_5foff_5fl',['ALLLED_OFF_L',['../_adafruit___p_w_m_servo_driver_8h.html#a6dc494d4156968e9cd24f7ac07bf2ee3',1,'Adafruit_PWMServoDriver.h']]],
-  ['allled_5fon_5fh',['ALLLED_ON_H',['../_adafruit___p_w_m_servo_driver_8h.html#a470526d36c4db534d04ec1452ddde736',1,'Adafruit_PWMServoDriver.h']]],
-  ['allled_5fon_5fl',['ALLLED_ON_L',['../_adafruit___p_w_m_servo_driver_8h.html#acc163ea7453bc87b5934e8b2bc838556',1,'Adafruit_PWMServoDriver.h']]]
+  ['frequency_5fcalibrated',['FREQUENCY_CALIBRATED',['../_adafruit___p_w_m_servo_driver_8h.html#a49e3fd187622e6ab1f540a40193a38f5',1,'Adafruit_PWMServoDriver.h']]],
+  ['frequency_5flegacy',['FREQUENCY_LEGACY',['../_adafruit___p_w_m_servo_driver_8h.html#a3c2c62c0744b6eb16b5d0717fe828067',1,'Adafruit_PWMServoDriver.h']]],
+  ['frequency_5foscillator',['FREQUENCY_OSCILLATOR',['../_adafruit___p_w_m_servo_driver_8h.html#aa01c719324fe02571722dbb29b3a2a1b',1,'Adafruit_PWMServoDriver.h']]]
 ];

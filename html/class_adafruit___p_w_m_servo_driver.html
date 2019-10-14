@@ -73,9 +73,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa13168f64159ab3307a51a4c8deadc83"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aa13168f64159ab3307a51a4c8deadc83">Adafruit_PWMServoDriver</a> (uint8_t addr=0x40, TwoWire *I2C=&amp;Wire)</td></tr>
-<tr class="memdesc:aa13168f64159ab3307a51a4c8deadc83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface.  <a href="#aa13168f64159ab3307a51a4c8deadc83">More...</a><br /></td></tr>
-<tr class="separator:aa13168f64159ab3307a51a4c8deadc83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3cf85e1f5f2832b2bb66c8265999676"><td class="memItemLeft" align="right" valign="top"><a id="ac3cf85e1f5f2832b2bb66c8265999676"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#ac3cf85e1f5f2832b2bb66c8265999676">Adafruit_PWMServoDriver</a> ()</td></tr>
+<tr class="memdesc:ac3cf85e1f5f2832b2bb66c8265999676"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface. <br /></td></tr>
+<tr class="separator:ac3cf85e1f5f2832b2bb66c8265999676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b860881e5d1792a7bb02fbf74f484b9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a1b860881e5d1792a7bb02fbf74f484b9">Adafruit_PWMServoDriver</a> (const uint8_t addr)</td></tr>
+<tr class="memdesc:a1b860881e5d1792a7bb02fbf74f484b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface.  <a href="#a1b860881e5d1792a7bb02fbf74f484b9">More...</a><br /></td></tr>
+<tr class="separator:a1b860881e5d1792a7bb02fbf74f484b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aefdc45bfd1007d0d3b76c5ab8ba992bf">Adafruit_PWMServoDriver</a> (const uint8_t addr, TwoWire &amp;i2c)</td></tr>
+<tr class="memdesc:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface.  <a href="#aefdc45bfd1007d0d3b76c5ab8ba992bf">More...</a><br /></td></tr>
+<tr class="separator:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a0cf3b5cabebe8111d5471311e3a63b72">begin</a> (uint8_t prescale=0)</td></tr>
 <tr class="memdesc:a0cf3b5cabebe8111d5471311e3a63b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the I2C interface and hardware.  <a href="#a0cf3b5cabebe8111d5471311e3a63b72">More...</a><br /></td></tr>
 <tr class="separator:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -109,12 +116,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a1246cd50849fe0f068cc5d474e06ae96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a1246cd50849fe0f068cc5d474e06ae96">setPin</a> (uint8_t num, uint16_t val, bool invert=false)</td></tr>
 <tr class="memdesc:a1246cd50849fe0f068cc5d474e06ae96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off and 4095 as completely on. Optional invert parameter supports inverting the pulse for sinking to ground.  <a href="#a1246cd50849fe0f068cc5d474e06ae96">More...</a><br /></td></tr>
 <tr class="separator:a1246cd50849fe0f068cc5d474e06ae96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a52dbe6fa4fa4a98d3082f239d59ad5f1">readPrescale</a> (void)</td></tr>
+<tr class="memdesc:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads set Prescale from PCA9685.  <a href="#a52dbe6fa4fa4a98d3082f239d59ad5f1">More...</a><br /></td></tr>
+<tr class="separator:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with PCA9685 PWM chip. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa13168f64159ab3307a51a4c8deadc83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa13168f64159ab3307a51a4c8deadc83">&#9670;&nbsp;</a></span>Adafruit_PWMServoDriver()</h2>
+<a id="a1b860881e5d1792a7bb02fbf74f484b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b860881e5d1792a7bb02fbf74f484b9">&#9670;&nbsp;</a></span>Adafruit_PWMServoDriver() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,14 +132,40 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">Adafruit_PWMServoDriver::Adafruit_PWMServoDriver </td>
           <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>addr</em> = <code>0x40</code>, </td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>The 7-bit I2C address to locate this chip, default is 0x40 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aefdc45bfd1007d0d3b76c5ab8ba992bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aefdc45bfd1007d0d3b76c5ab8ba992bf">&#9670;&nbsp;</a></span>Adafruit_PWMServoDriver() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Adafruit_PWMServoDriver::Adafruit_PWMServoDriver </td>
+          <td>(</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">TwoWire *&#160;</td>
-          <td class="paramname"><em>i2c</em> = <code>&amp;Wire</code>&#160;</td>
+          <td class="paramtype">TwoWire &amp;&#160;</td>
+          <td class="paramname"><em>i2c</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -143,7 +179,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">addr</td><td>The 7-bit I2C address to locate this chip, default is 0x40 </td></tr>
-    <tr><td class="paramname">i2c</td><td>A pointer to a 'Wire' compatible object that we'll use to communicate with </td></tr>
+    <tr><td class="paramname">i2c</td><td>A reference to a 'TwoWire' object that we'll use to communicate with </td></tr>
   </table>
   </dd>
 </dl>
@@ -367,6 +403,27 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a52dbe6fa4fa4a98d3082f239d59ad5f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52dbe6fa4fa4a98d3082f239d59ad5f1">&#9670;&nbsp;</a></span>readPrescale()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Adafruit_PWMServoDriver::readPrescale </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads set Prescale from PCA9685. </p>
+<dl class="section return"><dt>Returns</dt><dd>prescale value </dd></dl>
 
 </div>
 </div>
