@@ -88,6 +88,7 @@ class Adafruit_PWMServoDriver {
   void setPWM(uint8_t num, uint16_t on, uint16_t off);
   void setPin(uint8_t num, uint16_t val, bool invert=false);
   uint8_t readPrescale(void);
+  void writeMicroseconds(uint8_t num, uint16_t Microseconds)
 
  private:
   uint8_t _i2caddr;
