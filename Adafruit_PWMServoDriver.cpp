@@ -278,6 +278,56 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert) {
   }
 }
 
+/*!
+ *  @brief  Sets the PWM output of one of the PCA9685 pins based on the input microseconds, output is not precise
+ *  @param  num One of the PWM output pins, from 0 to 15
+ *  @param  Microseconds The number of Microseconds to turn the PWM output ON
+ */
+void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microseconds) {
+  #ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Setting PWM Via Microseconds on output");
+  Serial.print(num);
+  Serial.print(": ");
+  Serial.print(Microseconds);
+  Serial.println("->");
+  #endif
+
+  double pulse = Microseconds;
+  double pulselength;
+  pulselength = 1000000;   // 1,000,000 us per second
+
+  // Read prescale and convert to frequency
+  double prescale = Adafruit_PWMServoDriver::readPrescale();
+  prescale += 1;
+  uint32_t freq = 25000000; // Chip frequency is 25MHz
+  freq /= prescale;
+  freq /= 4096; // 12 bits of resolution
+ 
+  #ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print(freq); Serial.println(" Calculated PCA9685 chip PWM Frequency");
+  #endif
+  
+  pulselength /= freq;   //  us per period from PCA9685 chip PWM Frequency using prescale reverse frequency calc
+
+  #ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print(pulselength); Serial.println(" us per period");
+  #endif
+
+  pulselength /= 4096;  // 12 bits of resolution
+
+  #ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print(pulselength); Serial.println(" us per bit"); 
+  #endif
+
+  pulse /= pulselength;
+
+  #ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print(pulse);Serial.println(" pulse for PWM"); 
+  #endif
+
+  Adafruit_PWMServoDriver::setPWM(num, 0, pulse);
+}
+
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   _i2c->beginTransmission(_i2caddr);
   _i2c->write(addr);
