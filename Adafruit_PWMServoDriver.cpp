@@ -302,14 +302,14 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   // Rounding to nearest number is equal to adding 0,5 and floor to nearest number
   prescale *= 4096;
   prescale -= 2048;
+  double freq;
   prescale *= freq; // Calculated PCA9685 chip PWM Frequency
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(freq); Serial.println(" Calculated PCA9685 chip PWM Frequency");
   #endif
-
-  double freq;
-  pulselength /= freq;   //  PCA9685 chip PWM Frequency from prescale reverse frequency calc example 60 Hz
+  
+  pulselength /= freq;   //  us per period from PCA9685 chip PWM Frequency using prescale reverse frequency calc
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(pulselength); Serial.println(" us per period");
