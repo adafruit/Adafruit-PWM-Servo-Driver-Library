@@ -307,7 +307,8 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(freq); Serial.println(" Calculated PCA9685 chip PWM Frequency");
   #endif
-  
+
+  double freq;
   pulselength /= freq;   //  PCA9685 chip PWM Frequency from prescale reverse frequency calc example 60 Hz
 
   #ifdef ENABLE_DEBUG_OUTPUT
