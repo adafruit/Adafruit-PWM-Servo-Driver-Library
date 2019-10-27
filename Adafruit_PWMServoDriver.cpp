@@ -297,7 +297,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   pulselength = 1000000;   // 1,000,000 us per second
 
   // Read prescale and convert to frequency
-  double prescale = Adafruit_PWMServoDriver::readPrescale()
+  double prescale = Adafruit_PWMServoDriver::readPrescale();
   prescale += 1;
   // Rounding to nearest number is equal to adding 0,5 and floor to nearest number
   prescale *= 4096;
