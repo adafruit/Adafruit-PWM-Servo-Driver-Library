@@ -119,6 +119,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a52dbe6fa4fa4a98d3082f239d59ad5f1">readPrescale</a> (void)</td></tr>
 <tr class="memdesc:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads set Prescale from PCA9685.  <a href="#a52dbe6fa4fa4a98d3082f239d59ad5f1">More...</a><br /></td></tr>
 <tr class="separator:a52dbe6fa4fa4a98d3082f239d59ad5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa91cf057ec01505292401e4fdceb57ac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aa91cf057ec01505292401e4fdceb57ac">writeMicroseconds</a> (uint8_t num, uint16_t Microseconds)</td></tr>
+<tr class="memdesc:aa91cf057ec01505292401e4fdceb57ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins based on the input microseconds, output is not precise.  <a href="#aa91cf057ec01505292401e4fdceb57ac">More...</a><br /></td></tr>
+<tr class="separator:aa91cf057ec01505292401e4fdceb57ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class that stores state and functions for interacting with PCA9685 PWM chip. </p>
@@ -424,6 +427,43 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>Reads set Prescale from PCA9685. </p>
 <dl class="section return"><dt>Returns</dt><dd>prescale value </dd></dl>
+
+</div>
+</div>
+<a id="aa91cf057ec01505292401e4fdceb57ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa91cf057ec01505292401e4fdceb57ac">&#9670;&nbsp;</a></span>writeMicroseconds()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Adafruit_PWMServoDriver::writeMicroseconds </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>Microseconds</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the PWM output of one of the PCA9685 pins based on the input microseconds, output is not precise. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num</td><td>One of the PWM output pins, from 0 to 15 </td></tr>
+    <tr><td class="paramname">Microseconds</td><td>The number of Microseconds to turn the PWM output ON </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
