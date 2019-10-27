@@ -302,8 +302,9 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   // Rounding to nearest number is equal to adding 0,5 and floor to nearest number
   prescale *= 4096;
   prescale -= 2048;
-  double freq;
-  prescale *= freq; // Calculated PCA9685 chip PWM Frequency
+  uint32_t freq = FREQUENCY_CALIBRATED;
+  freq *= prescale; // Calculated PCA9685 chip PWM Frequency
+  freq /= 0.9; // Correct for overshoot in the frequency setting
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(freq); Serial.println(" Calculated PCA9685 chip PWM Frequency");
