@@ -281,7 +281,7 @@ void Adafruit_PWMServoDriver::setPin(uint8_t num, uint16_t val, bool invert) {
 /*!
  *  @brief  Sets the PWM output of one of the PCA9685 pins based on the input microseconds, output is not precise
  *  @param  num One of the PWM output pins, from 0 to 15
- *  @param  on At what point in the 4096-part cycle to turn the PWM output ON
+ *  @param  Microseconds The number of Microseconds to turn the PWM output ON
  */
 void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microseconds) {
   #ifdef ENABLE_DEBUG_OUTPUT
