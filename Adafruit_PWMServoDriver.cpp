@@ -296,24 +296,14 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   double pulselength;
   pulselength = 1000000;   // 1,000,000 us per second
 
-  // Read prescale and convert to frequency
+  // Read prescale
   double prescale = Adafruit_PWMServoDriver::readPrescale();
+  Serial.print(prescale); Serial.println(" PCA9685 chip prescale");
+
+  // Calculate the pulse for PWM based on Equation 1 from the datasheet section 7.3.5
   prescale += 1;
-  uint32_t freq = 25000000; // Chip frequency is 25MHz
-  freq /= prescale;
-  freq /= 4096; // 12 bits of resolution
- 
-  #ifdef ENABLE_DEBUG_OUTPUT
-  Serial.print(freq); Serial.println(" Calculated PCA9685 chip PWM Frequency");
-  #endif
-  
-  pulselength /= freq;   //  us per period from PCA9685 chip PWM Frequency using prescale reverse frequency calc
-
-  #ifdef ENABLE_DEBUG_OUTPUT
-  Serial.print(pulselength); Serial.println(" us per period");
-  #endif
-
-  pulselength /= 4096;  // 12 bits of resolution
+  pulselength *= prescale; 
+  pulselength /= FREQUENCY_CALIBRATED;
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(pulselength); Serial.println(" us per bit"); 
