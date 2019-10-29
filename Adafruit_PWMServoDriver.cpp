@@ -297,7 +297,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   pulselength = 1000000;   // 1,000,000 us per second
 
   // Read prescale
-  double prescale = Adafruit_PWMServoDriver::readPrescale();
+  uint16_t prescale = Adafruit_PWMServoDriver::readPrescale();
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(prescale); Serial.println(" PCA9685 chip prescale");
