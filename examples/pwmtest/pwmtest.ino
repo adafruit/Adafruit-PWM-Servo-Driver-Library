@@ -32,6 +32,8 @@ void setup() {
 
   pwm.begin();
   pwm.setPWMFreq(1600);  // This is the maximum PWM frequency
+  // or as alternative set the prescale manual: freq = oscillator-Hz / 4096*(prescale+1)
+  pwm.setPrescale(0x1e);  // PCA9685 sets itself default to 0x1e, approx 200Hz
 
   // if you want to really speed stuff up, you can go into 'fast 400khz I2C' mode
   // some i2c devices dont like this so much so if you're sharing the bus, watch
