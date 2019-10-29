@@ -298,7 +298,10 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
 
   // Read prescale
   double prescale = Adafruit_PWMServoDriver::readPrescale();
+
+  #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(prescale); Serial.println(" PCA9685 chip prescale");
+  #endif
 
   // Calculate the pulse for PWM based on Equation 1 from the datasheet section 7.3.5
   prescale += 1;
