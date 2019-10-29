@@ -301,7 +301,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   // Read prescale and convert to frequency
   double prescale = Adafruit_PWMServoDriver::readPrescale();
   prescale += 1;
-  uint32_t freq = FREQUENCY_OSCILLATOR; // Chip frequency is 25MHz
+  uint32_t freq = 25000000; // Chip frequency is 25MHz
   freq /= prescale;
   freq /= 4096; // 12 bits of resolution
  
