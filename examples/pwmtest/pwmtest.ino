@@ -31,6 +31,10 @@ void setup() {
   Serial.println("16 channel PWM test!");
 
   pwm.begin();
+  // In theory the internal oscillator is 25MHz but it really isn't
+  // that precise. You can 'calibrate' by tweaking this number till
+  // you get the frequency you're expecting!
+  pwm.setOscillatorFrequency(27000000);  // The int.osc. is closer to 27MHz
   pwm.setPWMFreq(1600);  // This is the maximum PWM frequency
   // or as alternative set the prescale manual: freq = oscillator-Hz / 4096*(prescale+1)
   pwm.setPrescale(0x1e);  // PCA9685 sets itself default to 0x1e, approx 200Hz
