@@ -42,8 +42,8 @@
 #define PCA9685_ALLLED_ON_H 0xFB  /**< load all the LEDn_ON registers, high */
 #define PCA9685_ALLLED_OFF_L 0xFC /**< load all the LEDn_OFF registers, low */
 #define PCA9685_ALLLED_OFF_H 0xFD /**< load all the LEDn_OFF registers,high */
-#define PCA9685_PRESCALE 0xFE /**< Prescaler for PWM output frequency */
-#define PCA9685_TESTMODE 0xFF /**< defines the test mode to be entered */
+#define PCA9685_PRESCALE 0xFE     /**< Prescaler for PWM output frequency */
+#define PCA9685_TESTMODE 0xFF     /**< defines the test mode to be entered */
 
 // MODE1 bits
 #define MODE1_ALLCAL 0x01  /**< respond to LED All Call I2C-bus address */
