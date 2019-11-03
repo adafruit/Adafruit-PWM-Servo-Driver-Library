@@ -30,6 +30,8 @@
 #include "Adafruit_PWMServoDriver.h"
 #include <Wire.h>
 
+//#define ENABLE_DEBUG_OUTPUT
+
 /*!
  *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
  * TwoWire interface
@@ -72,6 +74,8 @@ void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
     // set a default frequency
     setPWMFreq(1000);
   }
+  // set the default internal frequency
+  setOscillatorFrequency(FREQUENCY_OSCILLATOR);
 }
 
 /*!
@@ -139,16 +143,9 @@ void Adafruit_PWMServoDriver::setPWMFreq(float freq) {
   // Range output modulation frequency is dependant on oscillator
   if (freq < 1) freq = 1;
   if (freq > 3500) freq = 3500; // Datasheet limit is 3052=50MHz/(4*4096)
-  /*
-  freq *= 0.9; // Correct for overshoot in the frequency setting (see issue #11)
-  float prescaleval = FREQUENCY_OSCILLATOR;
-  */
-  uint32_t prescaleval = FREQUENCY_CALIBRATED;
-  prescaleval /= freq; // required output modulation frequency
-  // rounding to nearest number is equal to adding 0,5 and floor to nearest number
-  prescaleval += 2048;
-  prescaleval /= 4096;
-  prescaleval -= 1;
+
+
+  float prescaleval = ((_oscillator_freq / (freq * 4096.0)) + 0.5) - 1;
   if (prescaleval < PCA9685_PRESCALE_MIN) prescaleval = PCA9685_PRESCALE_MIN;
   if (prescaleval > PCA9685_PRESCALE_MAX) prescaleval = PCA9685_PRESCALE_MAX;
   uint8_t prescale = (uint8_t) prescaleval;
@@ -306,7 +303,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   // Calculate the pulse for PWM based on Equation 1 from the datasheet section 7.3.5
   prescale += 1;
   pulselength *= prescale; 
-  pulselength /= FREQUENCY_CALIBRATED;
+  pulselength /= _oscillator_freq;
 
   #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(pulselength); Serial.println(" us per bit"); 
@@ -321,6 +318,15 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num, uint16_t Microsecon
   Adafruit_PWMServoDriver::setPWM(num, 0, pulse);
 }
 
+uint32_t Adafruit_PWMServoDriver::getOscillatorFrequency(void) {
+  return _oscillator_freq;
+}
+
+void Adafruit_PWMServoDriver::setOscillatorFrequency(uint32_t freq) {
+  _oscillator_freq = freq;
+}
+
+/******************* Low level I2C interface */
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   _i2c->beginTransmission(_i2caddr);
   _i2c->write(addr);

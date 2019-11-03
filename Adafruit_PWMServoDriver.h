@@ -61,10 +61,7 @@
 #define MODE2_INVRT          0x10 /**< Output logic state inverted */
 
 #define PCA9685_I2C_ADDRESS  0x40 /**< Default PCA9685 I2C Slave Address */
-
-#define FREQUENCY_OSCILLATOR 25000000 /**< Oscillator frequency cf satasheet */
-#define FREQUENCY_CALIBRATED 26075000 /**< Oscillator frequency measured at 104.3% */
-#define FREQUENCY_LEGACY     27777778 /**< Oscillator frequency using freq /= 0,9 */
+#define FREQUENCY_OSCILLATOR 25000000 /**< Oscillator frequency in datasheet */
 
 #define PCA9685_PRESCALE_MIN 3 /**< minimum prescale value */
 #define PCA9685_PRESCALE_MAX 255 /**< maximum prescale value */
@@ -90,10 +87,14 @@ class Adafruit_PWMServoDriver {
   uint8_t readPrescale(void);
   void writeMicroseconds(uint8_t num, uint16_t Microseconds);
 
+  void setOscillatorFrequency(uint32_t freq);
+  uint32_t getOscillatorFrequency(void);
+
  private:
   uint8_t _i2caddr;
   TwoWire* _i2c;
 
+  uint32_t _oscillator_freq;
   uint8_t read8(uint8_t addr);
   void write8(uint8_t addr, uint8_t d);
 };
