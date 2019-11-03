@@ -33,23 +33,15 @@
 #define PCA9685_SUBADR2 0x03    /**< I2C-bus subaddress 2 */
 #define PCA9685_SUBADR3 0x04    /**< I2C-bus subaddress 3 */
 #define PCA9685_ALLCALLADR 0x05 /**< LED All Call I2C-bus address */
-#define PCA9685_LED0_ON_L 0x06  /**< LED0 output and brightness control byte 0 \
-                                   */
-#define PCA9685_LED0_ON_H 0x07  /**< LED0 output and brightness control byte 1 \
-                                   */
-#define PCA9685_LED0_OFF_L                                                     \
-  0x08 /**< LED0 output and brightness control byte 2 */
-#define PCA9685_LED0_OFF_H                                                     \
-  0x09 /**< LED0 output and brightness control byte 3 */
+#define PCA9685_LED0_ON_L 0x06  /**< LED0 output & brightness control byte 0 */
+#define PCA9685_LED0_ON_H 0x07  /**< LED0 output & brightness control byte 1 */
+#define PCA9685_LED0_OFF_L 0x08 /**< LED0 output & brightness control byte 2 */
+#define PCA9685_LED0_OFF_H 0x09 /**< LED0 output & brightness control byte 3 */
 // etc all 16:  LED15_OFF_H 0x45
-#define PCA9685_ALLLED_ON_L 0xFA /**< load all the LEDn_ON registers, byte 0   \
-                                    */
-#define PCA9685_ALLLED_ON_H 0xFB /**< load all the LEDn_ON registers, byte 1   \
-                                    */
-#define PCA9685_ALLLED_OFF_L                                                   \
-  0xFC /**< load all the LEDn_OFF registers, byte 0 */
-#define PCA9685_ALLLED_OFF_H                                                   \
-  0xFD                        /**< load all the LEDn_OFF registers, byte 1 */
+#define PCA9685_ALLLED_ON_L 0xFA /**< load all the LEDn_ON registers, low */
+#define PCA9685_ALLLED_ON_H 0xFB /**< load all the LEDn_ON registers, high */
+#define PCA9685_ALLLED_OFF_L 0xFC /**< load all the LEDn_OFF registers, low */
+#define PCA9685_ALLLED_OFF_H 0xFD /**< load all the LEDn_OFF registers, high */
 #define PCA9685_PRESCALE 0xFE /**< Prescaler for PWM output frequency */
 #define PCA9685_TESTMODE 0xFF /**< defines the test mode to be entered */
 
@@ -71,8 +63,7 @@
 #define MODE2_INVRT 0x10  /**< Output logic state inverted */
 
 #define PCA9685_I2C_ADDRESS 0x40      /**< Default PCA9685 I2C Slave Address */
-#define FREQUENCY_OSCILLATOR 25000000 /**< Oscillator frequency in datasheet   \
-                                         */
+#define FREQUENCY_OSCILLATOR 25000000 /**< Int. osc. frequency in datasheet */
 
 #define PCA9685_PRESCALE_MIN 3   /**< minimum prescale value */
 #define PCA9685_PRESCALE_MAX 255 /**< maximum prescale value */
