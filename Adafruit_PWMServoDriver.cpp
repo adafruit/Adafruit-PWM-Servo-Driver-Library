@@ -110,8 +110,9 @@ void Adafruit_PWMServoDriver::wakeup() {
  *  @param  extclk
  *          Sets EXTCLK pin to use the external clock
  */
-void Adafruit_PWMServoDriver::setPrescale(uint8_t prescale, bool extclk /* = false */) {
-  if (prescale < PCA9685_PRESCALE_MIN) return;
+void Adafruit_PWMServoDriver::setPrescale(uint8_t prescale, bool extclk) {
+  if (prescale < PCA9685_PRESCALE_MIN)
+    return;
   // if (prescale > PCA9685_PRESCALE_MAX) return;
 
   uint8_t newmode1 = read8(PCA9685_MODE1);
@@ -120,7 +121,9 @@ void Adafruit_PWMServoDriver::setPrescale(uint8_t prescale, bool extclk /* = fal
 
   // This sets both the SLEEP and EXTCLK bits of the MODE1 register to switch to
   // use the external clock.
-  if (extclk) { write8(PCA9685_MODE1, (newmode1 |= MODE1_EXTCLK)); }
+  if (extclk) {
+    write8(PCA9685_MODE1, (newmode1 |= MODE1_EXTCLK));
+  }
 
   write8(PCA9685_PRESCALE, prescale); // set the prescaler
 

@@ -81,7 +81,7 @@ public:
   void reset();
   void sleep();
   void wakeup();
-  void setPrescale(uint8_t prescale, bool extclk=false);
+  void setPrescale(uint8_t prescale, bool extclk = false);
   void setExtClk(uint8_t prescale);
   void setPWMFreq(float freq);
   void setOutputMode(bool totempole);
