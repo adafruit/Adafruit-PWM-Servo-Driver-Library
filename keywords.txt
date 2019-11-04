@@ -12,6 +12,7 @@ begin	KEYWORD2
 reset	KEYWORD2
 sleep	KEYWORD2
 wakeup	KEYWORD2
+setPrescale KEYWORD2
 setExtClk	KEYWORD2
 setPWMFreq	KEYWORD2
 setOutputMode	KEYWORD2
@@ -20,7 +21,10 @@ setPWM	KEYWORD2
 setPin	KEYWORD2
 readPrescale	KEYWORD2
 writeMicroseconds	KEYWORD2
+setOscillatorFrequency	KEYWORD2
+getOscillatorFrequency	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
+FREQUENCY_OSCILLATOR  LITERAL1
