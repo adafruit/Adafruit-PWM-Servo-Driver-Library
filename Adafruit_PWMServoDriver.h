@@ -87,11 +87,11 @@ public:
   uint8_t getPWM(uint8_t num);
   void setPWM(uint8_t num, uint16_t on, uint16_t off);
   void setPin(uint8_t num, uint16_t val, bool invert = false);
-  uint8_t readPrescale(void);
+  uint8_t readPrescale();
   void writeMicroseconds(uint8_t num, uint16_t Microseconds);
 
   void setOscillatorFrequency(uint32_t freq);
-  uint32_t getOscillatorFrequency(void);
+  uint32_t getOscillatorFrequency();
 
 private:
   uint8_t _i2caddr;

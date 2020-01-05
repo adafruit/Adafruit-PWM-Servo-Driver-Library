@@ -199,7 +199,7 @@ void Adafruit_PWMServoDriver::setOutputMode(bool totempole) {
  *  @brief  Reads set Prescale from PCA9685
  *  @return prescale value
  */
-uint8_t Adafruit_PWMServoDriver::readPrescale(void) {
+uint8_t Adafruit_PWMServoDriver::readPrescale() {
   return read8(PCA9685_PRESCALE);
 }
 
@@ -329,7 +329,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num,
  *  @returns The frequency the PCA9685 thinks it is running at (it cannot
  * introspect)
  */
-uint32_t Adafruit_PWMServoDriver::getOscillatorFrequency(void) {
+uint32_t Adafruit_PWMServoDriver::getOscillatorFrequency() {
   return _oscillator_freq;
 }
 
