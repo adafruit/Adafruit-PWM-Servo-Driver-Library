@@ -295,7 +295,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num,
   pulselength = 1000000; // 1,000,000 us per second
 
   // Read prescale
-  uint16_t prescale = Adafruit_PWMServoDriver::readPrescale();
+  uint16_t prescale = readPrescale();
 
 #ifdef ENABLE_DEBUG_OUTPUT
   Serial.print(prescale);
@@ -320,7 +320,7 @@ void Adafruit_PWMServoDriver::writeMicroseconds(uint8_t num,
   Serial.println(" pulse for PWM");
 #endif
 
-  Adafruit_PWMServoDriver::setPWM(num, 0, pulse);
+  setPWM(num, 0, pulse);
 }
 
 /*!
