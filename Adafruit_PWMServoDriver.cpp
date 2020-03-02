@@ -64,7 +64,24 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
  *          Sets External Clock (Optional)
  */
 void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
-  _i2c->begin();
+  begin(0,0, prescale);
+}
+
+
+/*!
+ *  @brief  Setups the I2C interface and hardware
+ *  @param  sda  Override default SDA pin
+ *  @param  scl  Override default SCL pin
+ *  @param  prescale  Sets External Clock (Optional)
+ */
+void Adafruit_PWMServoDriver::begin(uint8_t sda, uint8_t scl, uint8_t prescale) {
+  
+  if (sda && scl) {
+    _i2c->begin(sda, scl);
+  } else {
+    _i2c->begin();
+  }    
+  
   reset();
   if (prescale) {
     setExtClk(prescale);
@@ -75,6 +92,7 @@ void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   // set the default internal frequency
   setOscillatorFrequency(FREQUENCY_OSCILLATOR);
 }
+
 
 /*!
  *  @brief  Sends a reset command to the PCA9685 chip over I2C

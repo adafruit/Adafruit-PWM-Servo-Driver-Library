@@ -78,6 +78,7 @@ public:
   Adafruit_PWMServoDriver(const uint8_t addr);
   Adafruit_PWMServoDriver(const uint8_t addr, TwoWire &i2c);
   void begin(uint8_t prescale = 0);
+  void begin(uint8_t sda, uint8_t scl, uint8_t prescale = 0);
   void reset();
   void sleep();
   void wakeup();
