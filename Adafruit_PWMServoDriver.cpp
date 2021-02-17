@@ -213,6 +213,29 @@ uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
   return _i2c->read();
 }
 
+/*! 
+ *  @brief read pulsewidth (bits 0->4096) from spec'd channel
+ *  @param num is the channel number
+ *  @param on is a switch to say whether we want the "on" PWM bits or the "off" bits
+ *
+ * reference: 
+ * https://thecavepearlproject.org/2017/11/03/configuring-i2c-sensors-with-arduino/
+ */
+uint16_t Adafruit_PWMServoDriver::getPWM(uint8_t num, bool on) {
+  uint16_t _value;
+  // on == true means we want to read ON PWM value; true = 1, 
+  // so invert to point to PCA9685_LED0_OFF_L
+  uint8_t _register_addr = PCA9685_LED0_ON_L + 2 * (int)!on + 4 * num;
+  _i2c->beginTransmission(_i2caddr);      // set sensor target
+  _i2c->write(_register_addr);            // set memory pointer
+  _i2c->endTransmission();
+  _i2c->requestFrom((int)_i2caddr, (int) 2); // request two bytes
+  uint8_t _registerDataLo = _i2c->read(); // get low byte
+  uint8_t _registerDataHi = _i2c->read(); // get high byte
+  _value = (((int)_registerDataHi) << 8) | _registerDataLo; // combine two bytes
+  return (_value);
+}
+
 /*!
  *  @brief  Sets the PWM output of one of the PCA9685 pins
  *  @param  num One of the PWM output pins, from 0 to 15
