@@ -56,8 +56,8 @@
 #define MODE1_RESTART 0x80 /**< Restart enabled */
 // MODE2 bits
 #define MODE2_OUTNE_0 0x01 /**< Active LOW output enable input */
-#define MODE2_OUTNE_1                                                          \
-  0x02 /**< Active LOW output enable input - high impedience */
+#define MODE2_OUTNE_1 \
+  0x02                    /**< Active LOW output enable input - high impedience */
 #define MODE2_OUTDRV 0x04 /**< totem pole structure vs open-drain */
 #define MODE2_OCH 0x08    /**< Outputs change on ACK vs STOP */
 #define MODE2_INVRT 0x10  /**< Output logic state inverted */
@@ -72,7 +72,8 @@
  *  @brief  Class that stores state and functions for interacting with PCA9685
  * PWM chip
  */
-class Adafruit_PWMServoDriver {
+class Adafruit_PWMServoDriver
+{
 public:
   Adafruit_PWMServoDriver();
   Adafruit_PWMServoDriver(const uint8_t addr);
