@@ -239,6 +239,29 @@ void Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on, uint16_t off) {
 }
 
 /*!
+ *  @brief  Sets the PWM output of all of the PCA9685 pins
+ *  @param  on At what point in the 4096-part cycle to turn the PWM output ON
+ *  @param  off At what point in the 4096-part cycle to turn the PWM output OFF
+ */
+void Adafruit_PWMServoDriver::setAllPWM(uint16_t on, uint16_t off) {
+#ifdef ENABLE_DEBUG_OUTPUT
+  Serial.print("Setting all PWM ");
+  Serial.print(": ");
+  Serial.print(on);
+  Serial.print("->");
+  Serial.println(off);
+#endif
+
+  _i2c->beginTransmission(_i2caddr);
+  _i2c->write(PCA9685_ALLLED_ON_L);
+  _i2c->write(on);
+  _i2c->write(on >> 8);
+  _i2c->write(off);
+  _i2c->write(off >> 8);
+  _i2c->endTransmission();
+}
+
+/*!
  *   @brief  Helper to set pin PWM output. Sets pin without having to deal with
  * on/off tick placement and properly handles a zero value as completely off and
  * 4095 as completely on.  Optional invert parameter supports inverting the
