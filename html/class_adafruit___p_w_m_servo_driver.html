@@ -110,9 +110,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a387493a29e513ef700cfb4de30c0acc7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a387493a29e513ef700cfb4de30c0acc7">getPWM</a> (uint8_t num)</td></tr>
 <tr class="memdesc:a387493a29e513ef700cfb4de30c0acc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the PWM output of one of the PCA9685 pins.  <a href="#a387493a29e513ef700cfb4de30c0acc7">More...</a><br /></td></tr>
 <tr class="separator:a387493a29e513ef700cfb4de30c0acc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a724a7fc39c6fba34478ecc0eea038bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a724a7fc39c6fba34478ecc0eea038bd3">setPWM</a> (uint8_t num, uint16_t on, uint16_t off)</td></tr>
-<tr class="memdesc:a724a7fc39c6fba34478ecc0eea038bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins.  <a href="#a724a7fc39c6fba34478ecc0eea038bd3">More...</a><br /></td></tr>
-<tr class="separator:a724a7fc39c6fba34478ecc0eea038bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a3f400e2cc3df479ed98d0ce7e7a0860d">setPWM</a> (uint8_t num, uint16_t on, uint16_t off)</td></tr>
+<tr class="memdesc:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins.  <a href="#a3f400e2cc3df479ed98d0ce7e7a0860d">More...</a><br /></td></tr>
+<tr class="separator:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1246cd50849fe0f068cc5d474e06ae96"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a1246cd50849fe0f068cc5d474e06ae96">setPin</a> (uint8_t num, uint16_t val, bool invert=false)</td></tr>
 <tr class="memdesc:a1246cd50849fe0f068cc5d474e06ae96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Helper to set pin PWM output. Sets pin without having to deal with on/off tick placement and properly handles a zero value as completely off and 4095 as completely on. Optional invert parameter supports inverting the pulse for sinking to ground.  <a href="#a1246cd50849fe0f068cc5d474e06ae96">More...</a><br /></td></tr>
 <tr class="separator:a1246cd50849fe0f068cc5d474e06ae96"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -327,14 +327,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a724a7fc39c6fba34478ecc0eea038bd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a724a7fc39c6fba34478ecc0eea038bd3">&#9670;&nbsp;</a></span>setPWM()</h2>
+<a id="a3f400e2cc3df479ed98d0ce7e7a0860d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f400e2cc3df479ed98d0ce7e7a0860d">&#9670;&nbsp;</a></span>setPWM()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Adafruit_PWMServoDriver::setPWM </td>
+          <td class="memname">uint8_t Adafruit_PWMServoDriver::setPWM </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>num</em>, </td>
@@ -368,6 +368,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>result from endTransmission </dd></dl>
 
 </div>
 </div>
