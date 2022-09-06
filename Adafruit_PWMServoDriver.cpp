@@ -61,6 +61,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
  *  @brief  Setups the I2C interface and hardware
  *  @param  prescale
  *          Sets External Clock (Optional)
+ *  @return true if successful, otherwise false
  */
 bool Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   if (i2c_dev)
