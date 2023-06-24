@@ -55,8 +55,8 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr)
  *  with
  */
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
-                                                 TwoWire &i2c)
-    : _i2caddr(addr), _i2c(&i2c) {}
+                                                 TwoWire *i2c)
+    : _i2caddr(addr), _i2c(i2c) {}
 
 /*!
  *  @brief  Setups the I2C interface and hardware
