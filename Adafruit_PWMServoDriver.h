@@ -27,11 +27,24 @@
 #include <Wire.h>
 
 // REGISTER ADDRESSES
+#ifndef PCA9685_MODE1 
 #define PCA9685_MODE1 0x00      /**< Mode Register 1 */
+#endif
+
 #define PCA9685_MODE2 0x01      /**< Mode Register 2 */
+
+#ifndef PCA9685_SUBADR1
 #define PCA9685_SUBADR1 0x02    /**< I2C-bus subaddress 1 */
+#endif
+
+#ifndef PCA9685_SUBADR2
 #define PCA9685_SUBADR2 0x03    /**< I2C-bus subaddress 2 */
+#endif
+
+#ifndef PCA9685_SUBADR3
 #define PCA9685_SUBADR3 0x04    /**< I2C-bus subaddress 3 */
+#endif
+
 #define PCA9685_ALLCALLADR 0x05 /**< LED All Call I2C-bus address */
 #define PCA9685_LED0_ON_L 0x06  /**< LED0 on tick, low byte*/
 #define PCA9685_LED0_ON_H 0x07  /**< LED0 on tick, high byte*/
