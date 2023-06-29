@@ -28,7 +28,6 @@
  */
 
 #include "Adafruit_PWMServoDriver.h"
-#include <Wire.h>
 
 //#define ENABLE_DEBUG_OUTPUT
 
@@ -62,9 +61,14 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
  *  @brief  Setups the I2C interface and hardware
  *  @param  prescale
  *          Sets External Clock (Optional)
+ *  @return true if successful, otherwise false
  */
-void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
-  _i2c->begin();
+bool Adafruit_PWMServoDriver::begin(uint8_t prescale) {
+  if (i2c_dev)
+    delete i2c_dev;
+  i2c_dev = new Adafruit_I2CDevice(_i2caddr, _i2c);
+  if (!i2c_dev->begin())
+    return false;
   reset();
   if (prescale) {
     setExtClk(prescale);
@@ -74,6 +78,8 @@ void Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   }
   // set the default internal frequency
   setOscillatorFrequency(FREQUENCY_OSCILLATOR);
+
+  return true;
 }
 
 /*!
@@ -206,11 +212,15 @@ uint8_t Adafruit_PWMServoDriver::readPrescale(void) {
 /*!
  *  @brief  Gets the PWM output of one of the PCA9685 pins
  *  @param  num One of the PWM output pins, from 0 to 15
+ *  @param  off If true, returns PWM OFF value, otherwise PWM ON
  *  @return requested PWM output value
  */
-uint8_t Adafruit_PWMServoDriver::getPWM(uint8_t num) {
-  _i2c->requestFrom((int)_i2caddr, PCA9685_LED0_ON_L + 4 * num, (int)4);
-  return _i2c->read();
+uint16_t Adafruit_PWMServoDriver::getPWM(uint8_t num, bool off) {
+  uint8_t buffer[2] = {uint8_t(PCA9685_LED0_ON_L + 4 * num), 0};
+  if (off)
+    buffer[0] += 2;
+  i2c_dev->write_then_read(buffer, 1, buffer, 2);
+  return uint16_t(buffer[0]) | (uint16_t(buffer[1]) << 8);
 }
 
 /*!
@@ -231,13 +241,15 @@ uint8_t Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on,
   Serial.println(off);
 #endif
 
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(PCA9685_LED0_ON_L + 4 * num);
-  _i2c->write(on);
-  _i2c->write(on >> 8);
-  _i2c->write(off);
-  _i2c->write(off >> 8);
-  return _i2c->endTransmission();
+  uint8_t buffer[5];
+  buffer[0] = PCA9685_LED0_ON_L + 4 * num;
+  buffer[1] = on;
+  buffer[2] = on >> 8;
+  buffer[3] = off;
+  buffer[4] = off >> 8;
+  i2c_dev->write(buffer, 5);
+
+  return 0;
 }
 
 /*!
@@ -346,17 +358,12 @@ void Adafruit_PWMServoDriver::setOscillatorFrequency(uint32_t freq) {
 
 /******************* Low level I2C interface */
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(addr);
-  _i2c->endTransmission();
-
-  _i2c->requestFrom((uint8_t)_i2caddr, (uint8_t)1);
-  return _i2c->read();
+  uint8_t buffer[1] = {addr};
+  i2c_dev->write_then_read(buffer, 1, buffer, 1);
+  return buffer[0];
 }
 
 void Adafruit_PWMServoDriver::write8(uint8_t addr, uint8_t d) {
-  _i2c->beginTransmission(_i2caddr);
-  _i2c->write(addr);
-  _i2c->write(d);
-  _i2c->endTransmission();
+  uint8_t buffer[2] = {addr, d};
+  i2c_dev->write(buffer, 2);
 }

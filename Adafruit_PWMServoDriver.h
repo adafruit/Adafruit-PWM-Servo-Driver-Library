@@ -23,8 +23,8 @@
 #ifndef _ADAFRUIT_PWMServoDriver_H
 #define _ADAFRUIT_PWMServoDriver_H
 
+#include <Adafruit_I2CDevice.h>
 #include <Arduino.h>
-#include <Wire.h>
 
 // REGISTER ADDRESSES
 #define PCA9685_MODE1 0x00      /**< Mode Register 1 */
@@ -77,14 +77,14 @@ public:
   Adafruit_PWMServoDriver();
   Adafruit_PWMServoDriver(const uint8_t addr);
   Adafruit_PWMServoDriver(const uint8_t addr, TwoWire &i2c);
-  void begin(uint8_t prescale = 0);
+  bool begin(uint8_t prescale = 0);
   void reset();
   void sleep();
   void wakeup();
   void setExtClk(uint8_t prescale);
   void setPWMFreq(float freq);
   void setOutputMode(bool totempole);
-  uint8_t getPWM(uint8_t num);
+  uint16_t getPWM(uint8_t num, bool off = false);
   uint8_t setPWM(uint8_t num, uint16_t on, uint16_t off);
   void setPin(uint8_t num, uint16_t val, bool invert = false);
   uint8_t readPrescale(void);
@@ -96,6 +96,7 @@ public:
 private:
   uint8_t _i2caddr;
   TwoWire *_i2c;
+  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
 
   uint32_t _oscillator_freq;
   uint8_t read8(uint8_t addr);
