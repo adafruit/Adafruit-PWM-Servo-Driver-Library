@@ -83,9 +83,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#aefdc45bfd1007d0d3b76c5ab8ba992bf">Adafruit_PWMServoDriver</a> (const uint8_t addr, TwoWire &amp;i2c)</td></tr>
 <tr class="memdesc:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instantiates a new PCA9685 PWM driver chip with the I2C address on a TwoWire interface.  <a href="#aefdc45bfd1007d0d3b76c5ab8ba992bf">More...</a><br /></td></tr>
 <tr class="separator:aefdc45bfd1007d0d3b76c5ab8ba992bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a0cf3b5cabebe8111d5471311e3a63b72">begin</a> (uint8_t prescale=0)</td></tr>
-<tr class="memdesc:a0cf3b5cabebe8111d5471311e3a63b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the I2C interface and hardware.  <a href="#a0cf3b5cabebe8111d5471311e3a63b72">More...</a><br /></td></tr>
-<tr class="separator:a0cf3b5cabebe8111d5471311e3a63b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83911627e5626bfd599a6c78748438e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#ae83911627e5626bfd599a6c78748438e">begin</a> (uint8_t prescale=0)</td></tr>
+<tr class="memdesc:ae83911627e5626bfd599a6c78748438e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Setups the I2C interface and hardware.  <a href="#ae83911627e5626bfd599a6c78748438e">More...</a><br /></td></tr>
+<tr class="separator:ae83911627e5626bfd599a6c78748438e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f25f9f07525e08b7622c476b4a1f379"><td class="memItemLeft" align="right" valign="top"><a id="a5f25f9f07525e08b7622c476b4a1f379"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a5f25f9f07525e08b7622c476b4a1f379">reset</a> ()</td></tr>
 <tr class="memdesc:a5f25f9f07525e08b7622c476b4a1f379"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a reset command to the PCA9685 chip over I2C. <br /></td></tr>
@@ -107,9 +107,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a8d18d478574c8c686e94faefe11094b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a8d18d478574c8c686e94faefe11094b9">setOutputMode</a> (bool totempole)</td></tr>
 <tr class="memdesc:a8d18d478574c8c686e94faefe11094b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the output mode of the PCA9685 to either open drain or push pull / totempole. Warning: LEDs with integrated zener diodes should only be driven in open drain mode.  <a href="#a8d18d478574c8c686e94faefe11094b9">More...</a><br /></td></tr>
 <tr class="separator:a8d18d478574c8c686e94faefe11094b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a387493a29e513ef700cfb4de30c0acc7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a387493a29e513ef700cfb4de30c0acc7">getPWM</a> (uint8_t num)</td></tr>
-<tr class="memdesc:a387493a29e513ef700cfb4de30c0acc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the PWM output of one of the PCA9685 pins.  <a href="#a387493a29e513ef700cfb4de30c0acc7">More...</a><br /></td></tr>
-<tr class="separator:a387493a29e513ef700cfb4de30c0acc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32e368bf2880b5cd9cd7d007a80f7b12"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a32e368bf2880b5cd9cd7d007a80f7b12">getPWM</a> (uint8_t num, bool off=false)</td></tr>
+<tr class="memdesc:a32e368bf2880b5cd9cd7d007a80f7b12"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the PWM output of one of the PCA9685 pins.  <a href="#a32e368bf2880b5cd9cd7d007a80f7b12">More...</a><br /></td></tr>
+<tr class="separator:a32e368bf2880b5cd9cd7d007a80f7b12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_adafruit___p_w_m_servo_driver.html#a3f400e2cc3df479ed98d0ce7e7a0860d">setPWM</a> (uint8_t num, uint16_t on, uint16_t off)</td></tr>
 <tr class="memdesc:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the PWM output of one of the PCA9685 pins.  <a href="#a3f400e2cc3df479ed98d0ce7e7a0860d">More...</a><br /></td></tr>
 <tr class="separator:a3f400e2cc3df479ed98d0ce7e7a0860d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -196,14 +196,14 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a0cf3b5cabebe8111d5471311e3a63b72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0cf3b5cabebe8111d5471311e3a63b72">&#9670;&nbsp;</a></span>begin()</h2>
+<a id="ae83911627e5626bfd599a6c78748438e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae83911627e5626bfd599a6c78748438e">&#9670;&nbsp;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Adafruit_PWMServoDriver::begin </td>
+          <td class="memname">bool Adafruit_PWMServoDriver::begin </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>prescale</em> = <code>0</code></td><td>)</td>
@@ -219,6 +219,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful, otherwise false </dd></dl>
 
 </div>
 </div>
@@ -300,18 +301,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a id="a387493a29e513ef700cfb4de30c0acc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a387493a29e513ef700cfb4de30c0acc7">&#9670;&nbsp;</a></span>getPWM()</h2>
+<a id="a32e368bf2880b5cd9cd7d007a80f7b12"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32e368bf2880b5cd9cd7d007a80f7b12">&#9670;&nbsp;</a></span>getPWM()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t Adafruit_PWMServoDriver::getPWM </td>
+          <td class="memname">uint16_t Adafruit_PWMServoDriver::getPWM </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>num</em></td><td>)</td>
+          <td class="paramname"><em>num</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>off</em> = <code>false</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -320,6 +331,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">num</td><td>One of the PWM output pins, from 0 to 15 </td></tr>
+    <tr><td class="paramname">off</td><td>If true, returns PWM OFF value, otherwise PWM ON </td></tr>
   </table>
   </dd>
 </dl>
