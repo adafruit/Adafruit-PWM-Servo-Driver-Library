@@ -230,7 +230,7 @@ uint16_t Adafruit_PWMServoDriver::getPWM(uint8_t num, bool off) {
  *  @param  num One of the PWM output pins, from 0 to 15
  *  @param  on At what point in the 4096-part cycle to turn the PWM output ON
  *  @param  off At what point in the 4096-part cycle to turn the PWM output OFF
- *  @return result from endTransmission
+ *  @return 0 if successful, otherwise 1
  */
 uint8_t Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on,
                                         uint16_t off) {
@@ -249,9 +249,12 @@ uint8_t Adafruit_PWMServoDriver::setPWM(uint8_t num, uint16_t on,
   buffer[2] = on >> 8;
   buffer[3] = off;
   buffer[4] = off >> 8;
-  i2c_dev->write(buffer, 5);
 
-  return 0;
+  if (i2c_dev->write(buffer, 5)) {
+    return 0;
+  } else {
+    return 1;
+  }
 }
 
 /*!
