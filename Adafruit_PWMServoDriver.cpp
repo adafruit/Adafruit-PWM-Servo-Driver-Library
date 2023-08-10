@@ -70,14 +70,16 @@ bool Adafruit_PWMServoDriver::begin(uint8_t prescale) {
   if (!i2c_dev->begin())
     return false;
   reset();
+
+  // set the default internal frequency
+  setOscillatorFrequency(FREQUENCY_OSCILLATOR);
+
   if (prescale) {
     setExtClk(prescale);
   } else {
     // set a default frequency
     setPWMFreq(1000);
   }
-  // set the default internal frequency
-  setOscillatorFrequency(FREQUENCY_OSCILLATOR);
 
   return true;
 }
