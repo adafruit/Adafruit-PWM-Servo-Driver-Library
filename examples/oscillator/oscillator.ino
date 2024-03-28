@@ -56,7 +56,7 @@ uint32_t multiplier = 4096;
 volatile uint16_t interruptCounter = 0;
 
 ICACHE_RAM_ATTR void handleInterrupt() {
-  interruptCounter++;
+  interruptCounter = interruptCounter + 1;
 }
 
 void setup() {
@@ -86,7 +86,7 @@ void loop() {
   {
     // first freeze counters and adjust for new round
     frozenCounter = interruptCounter; // first freeze counter
-    interruptCounter -= frozenCounter;
+    interruptCounter = interruptCounter - frozenCounter;
     lastEvaluation += INTERVAL;
 
     totalCounter += frozenCounter;
@@ -108,10 +108,10 @@ void loop() {
 
        countDeviations++;
        Serial.printf("%4u", countDeviations);
-       Serial.printf(" Timestamp: %4u ", totalTime);
+       Serial.printf(" Timestamp: %4" PRIu32 " ", totalTime);
        Serial.printf(" Freq: %4u ", frozenCounter);
-       Serial.printf(" Counter: %6u ", totalCounter);
-       Serial.printf(" calc.osci.freq: %9u\n",realOsciFreq);
+       Serial.printf(" Counter: %6" PRIu32 " ", totalCounter);
+       Serial.printf(" calc.osci.freq: %9" PRIu32 "\n",realOsciFreq);
     }
   }
 
