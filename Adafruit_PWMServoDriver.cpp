@@ -29,7 +29,7 @@
 
 #include "Adafruit_PWMServoDriver.h"
 
-//#define ENABLE_DEBUG_OUTPUT
+// #define ENABLE_DEBUG_OUTPUT
 
 /*!
  *  @brief  Instantiates a new PCA9685 PWM driver chip with the I2C address on a
@@ -54,7 +54,7 @@ Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr)
  *  with
  */
 Adafruit_PWMServoDriver::Adafruit_PWMServoDriver(const uint8_t addr,
-                                                 TwoWire &i2c)
+                                                 TwoWire& i2c)
     : _i2caddr(addr), _i2c(&i2c) {}
 
 /*!
