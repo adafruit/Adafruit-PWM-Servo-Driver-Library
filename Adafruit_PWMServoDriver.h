@@ -56,7 +56,7 @@
 #define MODE1_RESTART 0x80 /**< Restart enabled */
 // MODE2 bits
 #define MODE2_OUTNE_0 0x01 /**< Active LOW output enable input */
-#define MODE2_OUTNE_1                                                          \
+#define MODE2_OUTNE_1 \
   0x02 /**< Active LOW output enable input - high impedience */
 #define MODE2_OUTDRV 0x04 /**< totem pole structure vs open-drain */
 #define MODE2_OCH 0x08    /**< Outputs change on ACK vs STOP */
@@ -73,10 +73,10 @@
  * PWM chip
  */
 class Adafruit_PWMServoDriver {
-public:
+ public:
   Adafruit_PWMServoDriver();
   Adafruit_PWMServoDriver(const uint8_t addr);
-  Adafruit_PWMServoDriver(const uint8_t addr, TwoWire &i2c);
+  Adafruit_PWMServoDriver(const uint8_t addr, TwoWire& i2c);
   bool begin(uint8_t prescale = 0);
   void reset();
   void sleep();
@@ -93,10 +93,10 @@ public:
   void setOscillatorFrequency(uint32_t freq);
   uint32_t getOscillatorFrequency(void);
 
-private:
+ private:
   uint8_t _i2caddr;
-  TwoWire *_i2c;
-  Adafruit_I2CDevice *i2c_dev = NULL; ///< Pointer to I2C bus interface
+  TwoWire* _i2c;
+  Adafruit_I2CDevice* i2c_dev = NULL; ///< Pointer to I2C bus interface
 
   uint32_t _oscillator_freq;
   uint8_t read8(uint8_t addr);
