@@ -361,6 +361,43 @@ void Adafruit_PWMServoDriver::setOscillatorFrequency(uint32_t freq) {
   _oscillator_freq = freq;
 }
 
+/*!
+ *  @brief  Sets the PWM output for multiple channels
+ *  @param  values Array of PWM values (0-4095) for each channel
+ *  @param  length Length of the array, from 1 to 16
+ *  @return 0 if successful, otherwise 1
+ */
+uint8_t Adafruit_PWMServoDriver::setMultiplePWM(uint16_t *values,
+                                                uint8_t length) {
+  if (length > 16)
+    length = 16;
+  uint8_t totalBytes = 1 + 4 * length;
+
+  uint8_t buffer[totalBytes];
+  buffer[0] = PCA9685_LED0_ON_L;
+  uint8_t *b = buffer + 1;
+
+  for (uint8_t i = 0; i < length; i++, b += 4) {
+    uint16_t val = values[i] > 4095 ? 4095 : values[i];
+    b[0] = 0;
+    if (val == 0) {
+      b[1] = 0;
+      b[2] = 0;
+      b[3] = MODE1_SLEEP;
+    } else if (val == 4095) {
+      b[1] = MODE1_SLEEP;
+      b[2] = 0;
+      b[3] = 0;
+    } else {
+      b[1] = 0;
+      b[2] = val & 0xFF;
+      b[3] = val >> 8;
+    }
+  }
+
+  return i2c_dev->write(buffer, totalBytes) ? 0 : 1;
+}
+
 /******************* Low level I2C interface */
 uint8_t Adafruit_PWMServoDriver::read8(uint8_t addr) {
   uint8_t buffer[1] = {addr};

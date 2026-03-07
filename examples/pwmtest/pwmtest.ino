@@ -58,10 +58,12 @@ void setup() {
 
 void loop() {
   // Drive each PWM in a 'wave'
-  for (uint16_t i=0; i<4096; i += 8) {
-    for (uint8_t pwmnum=0; pwmnum < 16; pwmnum++) {
-      pwm.setPWM(pwmnum, 0, (i + (4096/16)*pwmnum) % 4096 );
+  uint16_t pwmValues[16];
+  for (uint16_t i = 0; i < 4096; i += 8) {
+    for (uint8_t pwmnum = 0; pwmnum < 16; pwmnum++) {
+      pwmValues[pwmnum] = (i + (4096 / 16) * pwmnum) % 4096;
     }
+    pwm.setMultiplePWM(pwmValues, 16);
 #ifdef ESP8266
     yield();  // take a breather, required for ESP8266
 #endif

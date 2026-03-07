@@ -86,6 +86,7 @@ class Adafruit_PWMServoDriver {
   void setOutputMode(bool totempole);
   uint16_t getPWM(uint8_t num, bool off = false);
   uint8_t setPWM(uint8_t num, uint16_t on, uint16_t off);
+  uint8_t setMultiplePWM(uint16_t *values, uint8_t length);
   void setPin(uint8_t num, uint16_t val, bool invert = false);
   uint8_t readPrescale(void);
   void writeMicroseconds(uint8_t num, uint16_t Microseconds);

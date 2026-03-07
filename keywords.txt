@@ -17,6 +17,7 @@ setPWMFreq	KEYWORD2
 setOutputMode	KEYWORD2
 getPWM	KEYWORD2
 setPWM	KEYWORD2
+setMultiplePWM KEYWORD2
 setPin	KEYWORD2
 readPrescale	KEYWORD2
 writeMicroseconds	KEYWORD2
