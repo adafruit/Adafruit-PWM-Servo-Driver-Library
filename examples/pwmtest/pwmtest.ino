@@ -37,7 +37,7 @@ void setup() {
    * you get the PWM update frequency you're expecting!
    * The int.osc. for the PCA9685 chip is a range between about 23-27MHz and
    * is used for calculating things like writeMicroseconds()
-   * Analog servos run at ~50 Hz updates, It is important to use an
+   * Analog servos run at ~50 Hz updates. It is important to use an
    * oscilloscope in setting the int.osc frequency for the I2C PCA9685 chip.
    * 1) Attach the oscilloscope to one of the PWM signal pins and ground on
    *    the I2C PCA9685 chip you are setting the value for.
