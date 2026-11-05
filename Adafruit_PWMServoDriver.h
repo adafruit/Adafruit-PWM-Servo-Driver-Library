@@ -63,9 +63,9 @@
  */
 #define MODE2_OUTNE_0 0x01 /**< MODE2 OUTNE bit 0 */
 #define MODE2_OUTNE_1 0x02 /**< MODE2 OUTNE bit 1 */
-#define MODE2_OUTDRV 0x04 /**< totem pole structure vs open-drain */
-#define MODE2_OCH 0x08    /**< Outputs change on ACK vs STOP */
-#define MODE2_INVRT 0x10  /**< Output logic state inverted */
+#define MODE2_OUTDRV 0x04  /**< totem pole structure vs open-drain */
+#define MODE2_OCH 0x08     /**< Outputs change on ACK vs STOP */
+#define MODE2_INVRT 0x10   /**< Output logic state inverted */
 
 #define PCA9685_I2C_ADDRESS 0x40      /**< Default PCA9685 I2C Slave Address */
 #define FREQUENCY_OSCILLATOR 25000000 /**< Int. osc. frequency in datasheet */
