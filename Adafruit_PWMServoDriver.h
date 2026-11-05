@@ -55,9 +55,14 @@
 #define MODE1_EXTCLK 0x40  /**< Use EXTCLK pin clock */
 #define MODE1_RESTART 0x80 /**< Restart enabled */
 // MODE2 bits
-#define MODE2_OUTNE_0 0x01 /**< Active LOW output enable input */
-#define MODE2_OUTNE_1 \
-  0x02 /**< Active LOW output enable input - high impedience */
+/**
+ * OUTNE[1:0] selects the LED output state while OE is high:
+ * 00: low
+ * 01: high when OUTDRV is set, high-impedance when OUTDRV is clear
+ * 10 or 11: high-impedance
+ */
+#define MODE2_OUTNE_0 0x01 /**< MODE2 OUTNE bit 0 */
+#define MODE2_OUTNE_1 0x02 /**< MODE2 OUTNE bit 1 */
 #define MODE2_OUTDRV 0x04 /**< totem pole structure vs open-drain */
 #define MODE2_OCH 0x08    /**< Outputs change on ACK vs STOP */
 #define MODE2_INVRT 0x10  /**< Output logic state inverted */
